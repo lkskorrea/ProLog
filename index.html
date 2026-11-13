@@ -540,12 +540,24 @@
                     </button>
                 </div>
 
-                <!-- Linha 1: 4 Cards KPI Simétricos -->
-                <div class="mobile-2col-grid grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-5">
+                <!-- Linha 1: 4 Cards KPI Principais -->
+                <div class="mobile-2col-grid grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4">
+                    <div class="bg-brand-panel rounded-xl p-5 border border-brand-border flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-medium text-text-muted">Valor Total da Carga</p>
+                            <p class="text-2xl font-bold text-text-main mt-1" id="est-total-merc">R$ 0</p>
+                            <p class="text-[11px] text-text-muted mt-0.5" id="est-ticket-medio">Ticket médio: R$ 0 / NF</p>
+                        </div>
+                        <div class="w-11 h-11 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75"></path></svg>
+                        </div>
+                    </div>
+
                     <div class="bg-brand-panel rounded-xl p-5 border border-brand-border flex items-center justify-between">
                         <div>
                             <p class="text-xs font-medium text-text-muted">Frete Total</p>
                             <p class="text-2xl font-bold text-text-main mt-1" id="est-total-frete">R$ 0</p>
+                            <p class="text-[11px] text-sky-400 mt-0.5" id="est-frete-medios">R$ 0,00/kg • R$ 0,00/cx</p>
                         </div>
                         <div class="w-11 h-11 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -554,8 +566,9 @@
 
                     <div class="bg-brand-panel rounded-xl p-5 border border-brand-border flex items-center justify-between">
                         <div>
-                            <p class="text-xs font-medium text-text-muted">Volume (Caixas)</p>
+                            <p class="text-xs font-medium text-text-muted">Volume &amp; Peso</p>
                             <p class="text-2xl font-bold text-text-main mt-1" id="est-total-volume">0</p>
+                            <p class="text-[11px] text-text-muted mt-0.5" id="est-total-peso">0 kg • 0 pallets</p>
                         </div>
                         <div class="w-11 h-11 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"></path></svg>
@@ -566,6 +579,7 @@
                         <div>
                             <p class="text-xs font-medium text-text-muted">% Frete sobre Carga</p>
                             <p class="text-2xl font-bold text-text-main mt-1" id="est-perc-frete">0,00%</p>
+                            <p class="text-[11px] text-text-muted mt-0.5" id="est-total-pallets">0 pallets • 0 romaneios</p>
                         </div>
                         <div class="w-11 h-11 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0">
                             <svg class="w-6 h-6" viewBox="0 0 48 48" fill="none">
@@ -576,23 +590,33 @@
                             </svg>
                         </div>
                     </div>
+                </div>
 
-                    <div class="bg-brand-panel rounded-xl p-5 border border-brand-border flex items-center justify-between">
-                        <div>
-                            <p class="text-xs font-medium text-text-muted">Pallets</p>
-                            <p class="text-2xl font-bold text-text-main mt-1" id="est-total-pallets">0</p>
-                        </div>
-                        <div class="w-11 h-11 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0">
-                            <svg class="w-6 h-6" viewBox="0 0 48 48" fill="none">
-                                <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="3" opacity="0.35"/>
-                                <path d="M24 8 A16 16 0 0 1 40 24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                <path d="M24 15V24L30 28" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
+                <!-- Linha 2: 4 Indicadores Operacionais Complementares -->
+                <div class="mobile-2col-grid grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-5">
+                    <div class="bg-brand-panel rounded-xl p-4 border border-brand-border">
+                        <p class="text-[11px] font-medium text-text-muted">Ocupação Média / Romaneio</p>
+                        <p class="text-lg font-bold text-text-main mt-1" id="est-ocupacao-media">0 cxs • 0 pallets</p>
+                        <p class="text-[11px] text-text-muted mt-0.5" id="est-peso-medio-rom">0 kg / romaneio</p>
+                    </div>
+                    <div class="bg-brand-panel rounded-xl p-4 border border-brand-border">
+                        <p class="text-[11px] font-medium text-text-muted">Conferência de Balança</p>
+                        <p class="text-lg font-bold text-text-main mt-1" id="est-balanca-saldo">0,00 kg</p>
+                        <p class="text-[11px] text-text-muted mt-0.5" id="est-balanca-qtd">0 romaneio(s) pesados</p>
+                    </div>
+                    <div class="bg-brand-panel rounded-xl p-4 border border-brand-border">
+                        <p class="text-[11px] font-medium text-text-muted">Aproveitamento Fábrica</p>
+                        <p class="text-lg font-bold text-emerald-400 mt-1" id="est-aprov-fabrica">0%</p>
+                        <p class="text-[11px] text-text-muted mt-0.5" id="est-carreg-resumo">0 kg carregados</p>
+                    </div>
+                    <div class="bg-brand-panel rounded-xl p-4 border border-brand-border">
+                        <p class="text-[11px] font-medium text-text-muted">Vales Pallets (Geral)</p>
+                        <p class="text-lg font-bold text-amber-400 mt-1" id="est-vales-resumo">0 pendentes</p>
+                        <p class="text-[11px] text-emerald-400 mt-0.5" id="est-vales-coletados">0 coletados</p>
                     </div>
                 </div>
 
-                <!-- Linha 2: Caminhão + Gráfico de Barras Alinhados -->
+                <!-- Linha 3: Caminhão + Gráfico de Barras Alinhados -->
                 <div class="mobile-stack-grid grid grid-cols-1 lg:grid-cols-12 gap-4 mb-5 items-stretch">
                     <div class="lg:col-span-4 bg-brand-panel rounded-xl p-5 border border-brand-border flex flex-col items-center justify-center gap-3">
                         <svg class="w-36 h-24 text-sky-400 dark:text-white" viewBox="0 0 160 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -608,6 +632,7 @@
                         <div class="text-center">
                             <p class="text-xs font-medium text-text-muted">Notas Fiscais no Filtro</p>
                             <p class="text-xl font-bold text-text-main mt-0.5" id="est-total-notas">0</p>
+                            <p class="text-[11px] text-text-muted mt-0.5" id="est-total-cidades">0 cidades atendidas</p>
                         </div>
                     </div>
 
@@ -622,8 +647,26 @@
                     </div>
                 </div>
 
-                <!-- Linha 3: Tabela Full-Width -->
-                <div class="bg-brand-panel rounded-xl p-5 border border-brand-border">
+                <!-- Linha 4: Top Clientes e Top Produtos -->
+                <div class="mobile-stack-grid grid grid-cols-1 lg:grid-cols-2 gap-4 mb-5">
+                    <div class="bg-brand-panel rounded-xl p-5 border border-brand-border">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-sm font-bold text-text-main">Top 5 Clientes por Valor de Carga</h3>
+                            <span class="text-[11px] text-text-muted">No filtro atual</span>
+                        </div>
+                        <div id="est-top-clientes" class="space-y-2.5"></div>
+                    </div>
+                    <div class="bg-brand-panel rounded-xl p-5 border border-brand-border">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-sm font-bold text-text-main">Top 5 Produtos mais Embarcados</h3>
+                            <span class="text-[11px] text-text-muted">Quantidade / Valor</span>
+                        </div>
+                        <div id="est-top-produtos" class="space-y-2.5"></div>
+                    </div>
+                </div>
+
+                <!-- Linha 5: Desempenho por Transportadora -->
+                <div class="bg-brand-panel rounded-xl p-5 border border-brand-border mb-5">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-sm font-bold text-text-main">Desempenho por Transportadora</h3>
                         <span class="text-xs text-sky-400">Clique no nome para ver os romaneios</span>
@@ -633,15 +676,42 @@
                             <thead class="text-text-muted border-b border-brand-border bg-brand-bg">
                                 <tr>
                                     <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider">Transportadora</th>
+                                    <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider text-right">Romaneios</th>
                                     <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider text-right">Notas</th>
                                     <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider text-right">Caixas</th>
                                     <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider text-right">Pallets</th>
+                                    <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider text-right">Peso (kg)</th>
                                     <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider text-right">Mercadoria</th>
                                     <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider text-right">Frete</th>
+                                    <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider text-right">R$/kg</th>
                                     <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider text-right">% Frete</th>
                                 </tr>
                             </thead>
                             <tbody id="tbody-est-transp" class="divide-y divide-brand-border"></tbody>
+                            <tfoot id="tfoot-est-transp" class="bg-brand-bg font-bold border-t border-brand-border"></tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Linha 6: Ranking de Motoristas -->
+                <div class="bg-brand-panel rounded-xl p-5 border border-brand-border">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-bold text-text-main">Ranking de Motoristas (no Filtro)</h3>
+                        <span class="text-xs text-sky-400">Clique no motorista para ver os romaneios</span>
+                    </div>
+                    <div class="overflow-x-auto w-full">
+                        <table class="w-full text-left text-xs whitespace-nowrap">
+                            <thead class="text-text-muted border-b border-brand-border bg-brand-bg">
+                                <tr>
+                                    <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider">Motorista</th>
+                                    <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider">Transportadora</th>
+                                    <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider text-right">Romaneios</th>
+                                    <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider text-right">Caixas</th>
+                                    <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider text-right">Peso (kg)</th>
+                                    <th class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider text-right">Mercadoria</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-est-motoristas" class="divide-y divide-brand-border"></tbody>
                         </table>
                     </div>
                 </div>
@@ -672,30 +742,37 @@
                     </div>
                 </div>
 
-                <!-- Formulário Transportadora (Colapsável, sem e-mail) -->
-                <div id="box-form-transp" class="hidden bg-brand-panel rounded-xl p-5 mb-5 border border-brand-border">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-xs font-bold uppercase tracking-wider text-sky-400" id="titulo-form-transp">Nova Transportadora</h3>
-                        <button type="button" onclick="cancelarEdicaoTransportadora(true)" class="text-xs text-text-muted hover:text-text-main">&times; Fechar</button>
+                <!-- Submenu Modal Centralizado: Nova / Editar Transportadora -->
+                <div id="box-form-transp" class="hidden fixed inset-0 bg-slate-950/75 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto" onclick="if(event.target===this) cancelarEdicaoTransportadora(true)">
+                    <div class="bg-brand-panel rounded-2xl shadow-2xl w-full max-w-xl border border-brand-border overflow-hidden my-4">
+                        <div class="px-6 py-4 border-b border-brand-border flex items-center justify-between bg-brand-bg/60">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-brand-blue"></span>
+                                <h3 class="text-sm font-bold uppercase tracking-wider text-sky-400" id="titulo-form-transp">Nova Transportadora</h3>
+                            </div>
+                            <button type="button" onclick="cancelarEdicaoTransportadora(true)" class="text-text-muted hover:text-brand-red transition-colors bg-brand-bg rounded-full p-1.5" title="Fechar">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            </button>
+                        </div>
+                        <form id="form-transportadoras" class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4" onsubmit="salvarTransportadora(event)">
+                            <div class="sm:col-span-2">
+                                <label class="block text-xs font-medium text-text-muted mb-1">Razão Social</label>
+                                <input required type="text" id="transp-nome" placeholder="Ex: TRANSFRIO LOGÍSTICA LTDA" class="minimal-input uppercase">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-xs font-medium text-text-muted mb-1">Nome Padrão (Apelido)</label>
+                                <input required type="text" id="transp-apelido" placeholder="Ex: TRANSFRIO" class="minimal-input uppercase">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-xs font-medium text-text-muted mb-1">Tags para Unificação (separadas por vírgula)</label>
+                                <input type="text" id="transp-tags" placeholder="Ex: TRANS FRIO, TF LOG, TRANSFRIO RJ" class="minimal-input uppercase">
+                            </div>
+                            <div class="sm:col-span-2 pt-3 border-t border-brand-border flex justify-end gap-2.5">
+                                <button type="button" onclick="cancelarEdicaoTransportadora(true)" id="btn-cancelar-transp" class="px-4 py-2.5 bg-brand-bg text-text-muted hover:text-text-main text-xs font-semibold rounded-xl border border-brand-border transition-colors">Cancelar</button>
+                                <button type="submit" id="btn-salvar-transp" class="px-6 py-2.5 bg-brand-blue hover:bg-brand-lightBlue text-white text-xs font-semibold rounded-xl transition-colors shadow-sm">Salvar</button>
+                            </div>
+                        </form>
                     </div>
-                    <form id="form-transportadoras" onsubmit="salvarTransportadora(event)" class="grid grid-cols-1 md:grid-cols-12 gap-3 items-end">
-                        <div class="md:col-span-4">
-                            <label class="block text-xs font-medium text-text-muted mb-1">Razão Social</label>
-                            <input required type="text" id="transp-nome" placeholder="Ex: TRANSFRIO LOGÍSTICA LTDA" class="minimal-input uppercase">
-                        </div>
-                        <div class="md:col-span-3">
-                            <label class="block text-xs font-medium text-text-muted mb-1">Nome Padrão (Apelido)</label>
-                            <input required type="text" id="transp-apelido" placeholder="Ex: TRANSFRIO" class="minimal-input uppercase">
-                        </div>
-                        <div class="md:col-span-3">
-                            <label class="block text-xs font-medium text-text-muted mb-1">Tags para Unificação (separadas por vírgula)</label>
-                            <input type="text" id="transp-tags" placeholder="Ex: TRANS FRIO, TF LOG, TRANSFRIO RJ" class="minimal-input uppercase">
-                        </div>
-                        <div class="md:col-span-2 flex justify-end gap-2">
-                            <button type="button" onclick="cancelarEdicaoTransportadora(true)" id="btn-cancelar-transp" class="px-3 py-2.5 bg-brand-bg text-text-muted text-xs font-semibold rounded-xl hidden border border-brand-border">Cancelar</button>
-                            <button type="submit" id="btn-salvar-transp" class="w-full px-4 py-2.5 bg-brand-blue hover:bg-brand-lightBlue text-white text-xs font-semibold rounded-xl transition-colors">Salvar</button>
-                        </div>
-                    </form>
                 </div>
 
                 <!-- Submenu Modal Centralizado: Novo / Editar Motorista -->
@@ -832,6 +909,7 @@
                                     <th class="py-3 px-4">Produto</th>
                                     <th class="py-3 px-4 text-right">Qtd. / Caixa ou Fardo</th>
                                     <th class="py-3 px-4 text-right">Qtd. / Pallet Fechado</th>
+                                    <th class="py-3 px-4 text-right">Valor Médio</th>
                                     <th class="py-3 px-4 text-center">Notas</th>
                                     <th class="py-3 px-4 text-right">Ações</th>
                                 </tr>
@@ -876,7 +954,7 @@
                                 <label class="block text-[10px] font-medium text-text-muted mb-1">Número do Vale</label>
                                 <input type="text" id="vale-numero" required placeholder="VP-0001" class="minimal-input py-2 px-3 text-xs font-mono font-bold bg-brand-bg border-brand-border">
                             </div>
-                            <div class="sm:col-span-4">
+                            <div class="sm:col-span-3">
                                 <label class="block text-[10px] font-medium text-text-muted mb-1">Nome do Cliente</label>
                                 <input type="text" list="datalist-clientes-vale" id="vale-cliente" oninput="aoSelecionarClienteVale(this.value)" required placeholder="Nome do cliente..." class="minimal-input py-2 px-3 text-xs bg-brand-bg border-brand-border">
                                 <datalist id="datalist-clientes-vale"></datalist>
@@ -887,7 +965,11 @@
                                 <input type="hidden" id="vale-cnpj" value="">
                             </div>
                             <div class="sm:col-span-2">
-                                <label class="block text-[10px] font-medium text-text-muted mb-1">Quantidade</label>
+                                <label class="block text-[10px] font-medium text-text-muted mb-1">Validade do Vale</label>
+                                <input type="date" id="vale-validade" class="minimal-input py-2 px-3 text-xs bg-brand-bg border-brand-border">
+                            </div>
+                            <div class="sm:col-span-1">
+                                <label class="block text-[10px] font-medium text-text-muted mb-1">Qtd.</label>
                                 <input type="number" id="vale-qtd" required min="1" placeholder="0" class="minimal-input py-2 px-3 text-xs bg-brand-bg border-brand-border">
                             </div>
                             <div class="sm:col-span-2">
@@ -898,23 +980,11 @@
                                 <input type="text" id="vale-obs" placeholder="Observação opcional (ex: referência, contato, motivo...)" class="minimal-input py-2 px-3 text-xs bg-brand-bg border-brand-border">
                             </div>
                         </form>
-                        
-                        <div class="overflow-x-auto w-full border border-brand-border rounded-xl">
-                            <table class="w-full text-left text-xs">
-                                <thead class="text-text-muted border-b border-brand-border bg-brand-bg">
-                                    <tr>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Número do Vale</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px]">Nome do Cliente</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Cidade / UF</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Data de Agenda</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px]">Observação</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] text-center whitespace-nowrap">Quantidade</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] text-center whitespace-nowrap">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody-vale-pallets" class="divide-y divide-brand-border"></tbody>
-                            </table>
+
+                        <div class="flex items-center justify-between gap-2 mb-3 text-[11px] text-text-muted">
+                            <span>Vales agrupados por <strong>Cliente / CNPJ</strong>. Arraste um vale entre agendas diferentes do mesmo cliente para reagendar.</span>
                         </div>
+                        <div id="tbody-vale-pallets" class="space-y-3"></div>
                     </div>
 
                     <!-- Histórico de Coletas (ao baixar vales de clientes) -->
@@ -1038,11 +1108,7 @@
                     <h2 class="text-lg font-bold tracking-tight text-text-main">Carregamentos</h2>
 
                     <div class="edit-only flex items-center gap-2">
-                        <label class="bg-brand-panel hover:bg-brand-blue hover:text-white text-text-main border border-brand-border px-3.5 py-2 rounded-lg text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1.5 whitespace-nowrap">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                            Importar Print
-                            <input type="file" id="carregamento-img-input" accept="image/*" multiple class="hidden" onchange="importarImagemCarregamento(event)"/>
-                        </label>
+
 
                         <button onclick="abrirModalCarregamento()" class="bg-brand-blue hover:bg-brand-lightBlue text-white px-3.5 py-2 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 whitespace-nowrap">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path></svg>
@@ -1165,7 +1231,7 @@
     </div>
 
     <!-- MODAL DE LANÇAMENTO / REVISÃO DE CARREGAMENTO -->
-    <div id="modal-carregamento" class="fixed inset-0 bg-slate-900/75 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4 overflow-y-auto">
+    <div id="modal-carregamento" class="fixed inset-0 bg-slate-900/75 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4 overflow-y-auto" onclick="if(event.target===this) fecharModal('modal-carregamento')">
         <div class="bg-brand-panel rounded-3xl shadow-2xl w-full max-w-5xl border border-brand-border my-8 overflow-hidden">
             <div class="px-6 py-4 border-b border-brand-border flex justify-between items-center bg-brand-bg/50">
                 <div class="flex items-center gap-2.5">
@@ -1332,7 +1398,7 @@
     </div>
 
     <!-- MODAL ALIMENTAR PESOS POR IMAGEM (PRINT) OU TEXTO -->
-    <div id="modal-colar-pesos" class="fixed inset-0 bg-slate-900/75 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4 overflow-y-auto">
+    <div id="modal-colar-pesos" class="fixed inset-0 bg-slate-900/75 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4 overflow-y-auto" onclick="if(event.target===this) fecharModal('modal-colar-pesos')">
         <div class="bg-brand-panel rounded-3xl shadow-2xl w-full max-w-4xl border border-brand-border my-8 overflow-hidden">
             <div class="px-6 py-4 border-b border-brand-border flex justify-between items-center bg-brand-bg/50">
                 <div class="flex items-center gap-2.5">
@@ -1452,7 +1518,7 @@
     </div>
 
     <!-- MODAL ROMANEIO -->
-    <div id="modal-romaneio" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+    <div id="modal-romaneio" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4" onclick="if(event.target===this) fecharModal('modal-romaneio')">
         <div class="bg-brand-panel rounded-3xl shadow-2xl w-full max-w-2xl border border-brand-border">
             <div class="px-6 py-5 border-b border-brand-border flex justify-between items-center">
                 <h3 class="text-lg font-bold tracking-tight text-text-main">Editar Romaneio</h3>
@@ -1509,7 +1575,7 @@
     </div>
 
     <!-- MODAL MENU TRANSPORTADORA: TODOS OS ROMANEIOS E MOTORISTAS -->
-    <div id="modal-detalhes-transp" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4 overflow-y-auto">
+    <div id="modal-detalhes-transp" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4 overflow-y-auto" onclick="if(event.target===this) fecharModal('modal-detalhes-transp')">
         <div class="bg-brand-panel rounded-2xl shadow-2xl w-full max-w-5xl border border-brand-border my-8 overflow-hidden">
             <div class="px-6 py-4 border-b border-brand-border flex justify-between items-center bg-brand-bg/60">
                 <div class="flex items-center gap-3">
@@ -1557,7 +1623,7 @@
     </div>
 
     <!-- MODAL MENU MOTORISTA: TODOS OS ROMANEIOS CARREGADOS -->
-    <div id="modal-detalhes-motorista" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4 overflow-y-auto">
+    <div id="modal-detalhes-motorista" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4 overflow-y-auto" onclick="if(event.target===this) fecharModal('modal-detalhes-motorista')">
         <div class="bg-brand-panel rounded-2xl shadow-2xl w-full max-w-5xl border border-brand-border my-8 overflow-hidden">
             <div class="px-6 py-4 border-b border-brand-border flex justify-between items-center bg-brand-bg/60">
                 <div class="flex items-center gap-3">
@@ -1604,7 +1670,7 @@
     </div>
 
     <!-- MODAL DETALHES DO CLIENTE (TODAS AS INFORMAÇÕES DO XML) -->
-    <div id="modal-detalhes-cliente" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4 overflow-y-auto">
+    <div id="modal-detalhes-cliente" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4 overflow-y-auto" onclick="if(event.target===this) fecharModal('modal-detalhes-cliente')">
         <div class="bg-brand-panel rounded-2xl shadow-2xl w-full max-w-5xl border border-brand-border my-8 overflow-hidden">
             <div class="px-6 py-4 border-b border-brand-border flex justify-between items-center bg-brand-bg/60">
                 <div class="flex items-center gap-3">
@@ -1653,7 +1719,7 @@
     </div>
 
     <!-- MODAL NOTAS FISCAIS DO PRODUTO -->
-    <div id="modal-notas-produto" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4 overflow-y-auto">
+    <div id="modal-notas-produto" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4 overflow-y-auto" onclick="if(event.target===this) fecharModal('modal-notas-produto')">
         <div class="bg-brand-panel rounded-2xl shadow-2xl w-full max-w-5xl border border-brand-border my-8 overflow-hidden">
             <div class="px-6 py-4 border-b border-brand-border flex justify-between items-center bg-brand-bg/60">
                 <div class="flex items-center gap-3">
@@ -1698,7 +1764,7 @@
 
 
     <!-- MODAL DE LOGIN, CADASTRO, APROVAÇÃO ADMIN E FIREBASE -->
-    <div id="modal-auth-firebase" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md hidden z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div id="modal-auth-firebase" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md hidden z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto" onclick="if(event.target===this) fecharModal('modal-auth-firebase')">
         <div class="bg-brand-panel rounded-2xl shadow-2xl w-full max-w-lg border border-brand-border my-4 overflow-hidden">
             <div class="px-5 py-4 border-b border-brand-border flex justify-between items-center bg-brand-bg/60">
                 <div class="flex items-center gap-2.5">
@@ -4350,11 +4416,14 @@
             const rows = cacheExportEstatisticas.map(([nome, d]) => ({
                 "Transportadora": nome,
                 "Razão Social": obterNomeCompletoTransportadora(nome),
+                "Romaneios": d.roms ? d.roms.size : 0,
                 "Notas": d.nfs,
                 "Caixas": d.vols,
                 "Pallets": d.pallets,
+                "Peso (kg)": Number((d.peso || 0).toFixed(2)),
                 "Valor Mercadoria (R$)": d.merc,
                 "Frete (R$)": d.frete,
+                "Frete por Kg (R$)": d.peso > 0 ? Number((d.frete / d.peso).toFixed(4)) : 0,
                 "% Frete": d.merc > 0 ? Number(((d.frete / d.merc) * 100).toFixed(2)) : 0
             }));
             const ws = XLSX.utils.json_to_sheet(rows);
@@ -4376,10 +4445,11 @@
             const labelEmb = (p.unidade || 'Caixas') === 'Fardos' ? 'fardo' : 'caixa';
             document.getElementById('modal-prod-subtitulo').innerText = `${p.qtdEmb} un / ${labelEmb} fechado • ${p.qtdPallets} ${(p.unidade || 'Caixas').toLowerCase()} / pallet fechado`;
 
+            const valMedioModal = totQtd > 0 ? (totVal / totQtd) : 0;
             document.getElementById('modal-prod-kpis').innerHTML = `
                 <div class="bg-brand-bg rounded-xl p-3 border border-brand-border"><span class="text-[10px] text-text-muted uppercase">Notas Fiscais</span><p class="text-lg font-bold text-text-main">${notas.length}</p></div>
-                <div class="bg-brand-bg rounded-xl p-3 border border-brand-border"><span class="text-[10px] text-text-muted uppercase">Por ${labelEmb} fechado</span><p class="text-lg font-bold text-text-main">${p.qtdEmb} un</p></div>
-                <div class="bg-brand-bg rounded-xl p-3 border border-brand-border"><span class="text-[10px] text-text-muted uppercase">Por pallet fechado</span><p class="text-lg font-bold text-text-main">${p.qtdPallets} ${(p.unidade || 'Caixas').toLowerCase()}</p></div>
+                <div class="bg-brand-bg rounded-xl p-3 border border-brand-border"><span class="text-[10px] text-text-muted uppercase">Por ${labelEmb} / Pallet</span><p class="text-lg font-bold text-text-main">${p.qtdEmb} un • ${p.qtdPallets} ${(p.unidade || 'Caixas').toLowerCase()}</p></div>
+                <div class="bg-brand-bg rounded-xl p-3 border border-brand-border"><span class="text-[10px] text-text-muted uppercase">Valor Médio Unit.</span><p class="text-lg font-bold text-emerald-400">R$ ${valMedioModal.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2})}</p></div>
                 <div class="bg-brand-bg rounded-xl p-3 border border-brand-border"><span class="text-[10px] text-text-muted uppercase">Valor nas NFs</span><p class="text-lg font-bold text-sky-400">R$ ${totVal.toLocaleString('pt-BR', {minimumFractionDigits:2})}</p></div>
             `;
 
@@ -4505,8 +4575,33 @@
             if (contador) contador.innerText = `${filtrados.length} produto(s) com romaneio`;
 
             if (filtrados.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-text-muted">Nenhum produto com romaneio vinculado encontrado.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-text-muted">Nenhum produto com romaneio vinculado encontrado.</td></tr>`;
                 return;
+            }
+
+            // Calcula valor médio separadamente para cada produto
+            const statsPorSku = new Map();
+            const statsPorNome = new Map();
+            for (let i = 0; i < bancoDados.length; i++) {
+                const r = bancoDados[i];
+                if (!Array.isArray(r.produtosXML)) continue;
+                for (let j = 0; j < r.produtosXML.length; j++) {
+                    const item = r.produtosXML[j];
+                    const q = Number(item.qtd) || 0;
+                    const v = Number(item.valor) || 0;
+                    const sk = String(item.cProd || '').trim().toUpperCase();
+                    const nm = normalizarTextoTransp(item.nome || '');
+                    if (sk) {
+                        const acc = statsPorSku.get(sk) || { qtd: 0, val: 0 };
+                        acc.qtd += q; acc.val += v;
+                        statsPorSku.set(sk, acc);
+                    }
+                    if (nm) {
+                        const acc = statsPorNome.get(nm) || { qtd: 0, val: 0 };
+                        acc.qtd += q; acc.val += v;
+                        statsPorNome.set(nm, acc);
+                    }
+                }
             }
 
             tbody.innerHTML = filtrados.map(p => {
@@ -4514,12 +4609,15 @@
                 const nomeKey = normalizarTextoTransp(p.nome || '');
                 const setNotas = porSku.get(skuKey) || porNome.get(nomeKey);
                 const qtdNotas = setNotas ? setNotas.size : 0;
+                const st = statsPorSku.get(skuKey) || statsPorNome.get(nomeKey) || { qtd: 0, val: 0 };
+                const valorMedio = st.qtd > 0 ? (st.val / st.qtd) : 0;
                 return `
                 <tr onclick="abrirNotasDoProduto(${p.id})" class="item-hover cursor-pointer transition-colors">
                     <td class="py-3 px-4 font-mono font-bold text-sky-400">${p.sku}</td>
                     <td class="py-3 px-4 font-semibold text-text-main">${p.nome}</td>
                     <td class="py-3 px-4 text-right font-semibold text-text-main">${p.qtdEmb} <span class="text-text-muted font-normal">un / ${(p.unidade || 'Caixas') === 'Fardos' ? 'Fardo' : 'Caixa'}</span></td>
                     <td class="py-3 px-4 text-right font-semibold text-text-main">${p.qtdPallets} <span class="text-text-muted font-normal">${(p.unidade || 'Caixas').toLowerCase()} / pallet</span></td>
+                    <td class="py-3 px-4 text-right font-mono font-bold text-emerald-400">${valorMedio > 0 ? 'R$ ' + valorMedio.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '---'}</td>
                     <td class="py-3 px-4 text-center">
                         <span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-sky-500/15 text-sky-400">${qtdNotas} NF(s)</span>
                     </td>
@@ -4925,6 +5023,8 @@
             const cidade = (document.getElementById('vale-cidade')?.value.trim() || parsed.cidade || '').toUpperCase();
             const cad = buscarCadastroClientePorNomeCidade(cliente, cidade, parsed.codigo);
             const cnpj = document.getElementById('vale-cnpj')?.value.trim() || cad?.cnpj || '';
+            const validadeRaw = document.getElementById('vale-validade')?.value || '';
+            const validade = validadeRaw ? formatarDataInputParaBR(validadeRaw) : '';
             const qtd = parseInt(document.getElementById('vale-qtd').value, 10);
             const obs = document.getElementById('vale-obs')?.value.trim() || '';
             const dataHoje = new Date().toLocaleDateString('pt-BR');
@@ -4937,6 +5037,7 @@
                 cliente: cliente,
                 cidade: cidade,
                 cnpj: cnpj,
+                validade: validade,
                 obs: obs,
                 dataAgenda: '',
                 data: dataHoje,
@@ -4956,6 +5057,7 @@
             if (!vale) return;
 
             const dataAgendaISO = formatarDataBRParaISO(vale.dataAgenda || '');
+            const validadeISO = formatarDataBRParaISO(vale.validade || '');
 
             const { value: formValues } = await Swal.fire({
                 title: `Editar Vale ${vale.numeroVale || ''}`,
@@ -4973,10 +5075,14 @@
                             <label class="block text-xs font-semibold mb-1">Cidade / UF</label>
                             <input id="swal-edit-vale-cid" type="text" class="minimal-input uppercase" placeholder="CIDADE/UF" value="${vale.cidade || ''}">
                         </div>
-                        <div class="grid grid-cols-2 gap-3">
+                        <div class="grid grid-cols-3 gap-2.5">
                             <div>
                                 <label class="block text-xs font-semibold mb-1">Data de Agenda</label>
                                 <input id="swal-edit-vale-agenda" type="date" class="minimal-input" value="${dataAgendaISO}">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Validade</label>
+                                <input id="swal-edit-vale-validade" type="date" class="minimal-input" value="${validadeISO}">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold mb-1">Quantidade</label>
@@ -5000,6 +5106,7 @@
                     const cidIn = (document.getElementById('swal-edit-vale-cid').value.trim() || parsed.cidade || '').toUpperCase();
                     const cad = buscarCadastroClientePorNomeCidade(parsed.nome, cidIn, parsed.codigo);
                     const agRaw = document.getElementById('swal-edit-vale-agenda').value;
+                    const valRaw = document.getElementById('swal-edit-vale-validade').value;
                     const qtd = parseInt(document.getElementById('swal-edit-vale-qtd').value, 10);
                     const obs = document.getElementById('swal-edit-vale-obs')?.value.trim() || '';
                     if (!parsed.nome || !qtd || qtd <= 0) {
@@ -5012,6 +5119,7 @@
                         cidade: cidIn,
                         cnpj: cad?.cnpj || vale.cnpj || '',
                         dataAgenda: agRaw ? formatarDataInputParaBR(agRaw) : '',
+                        validade: valRaw ? formatarDataInputParaBR(valRaw) : '',
                         qtd,
                         obs
                     };
@@ -5024,6 +5132,7 @@
                 vale.cidade = formValues.cidade;
                 vale.cnpj = formValues.cnpj;
                 vale.dataAgenda = formValues.dataAgenda;
+                vale.validade = formValues.validade;
                 vale.qtd = formValues.qtd;
                 vale.obs = formValues.obs;
                 await salvarTodosBancos();
@@ -5255,6 +5364,8 @@
                 "Número do Vale": v.numeroVale || `VP-${String(idx + 1).padStart(4, '0')}`,
                 "Nome do Cliente": v.cliente || '',
                 "Cidade / UF": v.cidade || '',
+                "CNPJ": v.cnpj || '',
+                "Validade": v.validade || '',
                 "Data de Agenda": v.dataAgenda || 'Não agendado',
                 "Observação": v.obs || '',
                 "Quantidade": v.qtd || 0
@@ -5306,43 +5417,140 @@
                 dlClientes.innerHTML = [...new Set(opcoes)].map(opt => `<option value="${opt}"></option>`).join('');
             }
 
-            // Tabela Vales Clientes (Cidade/UF ao invés de CNPJ + botão Excluir direto)
+            // Vales agrupados por Cliente / CNPJ com Drag & Drop entre agendas diferentes do mesmo cliente
             const tbodyVales = document.getElementById('tbody-vale-pallets');
             let totalValesCli = 0;
             const valesCliFiltrados = bancoValePallets.filter(v => {
                 if (!termo) return true;
                 return (v.numeroVale && v.numeroVale.toLowerCase().includes(termo)) ||
                     (v.cliente && v.cliente.toLowerCase().includes(termo)) ||
+                    (v.cnpj && v.cnpj.toLowerCase().includes(termo)) ||
                     (v.cidade && v.cidade.toLowerCase().includes(termo)) ||
+                    (v.validade && String(v.validade).toLowerCase().includes(termo)) ||
                     (v.obs && v.obs.toLowerCase().includes(termo)) ||
                     (v.dataAgenda && String(v.dataAgenda).toLowerCase().includes(termo));
             });
 
             if (valesCliFiltrados.length === 0) {
-                if(tbodyVales) tbodyVales.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-text-muted text-xs">Nenhum vale de cliente pendente.</td></tr>`;
+                if(tbodyVales) tbodyVales.innerHTML = `<div class="text-center py-8 text-text-muted text-xs border border-dashed border-brand-border rounded-xl">Nenhum vale de cliente pendente.</div>`;
             } else {
-                const htmlCli = valesCliFiltrados.map((v, idx) => {
+                const gruposClientes = new Map();
+                valesCliFiltrados.forEach((v, idx) => {
                     totalValesCli += (v.qtd || 0);
-                    const numExibido = v.numeroVale || `VP-${String(idx + 1).padStart(4, '0')}`;
-                    const agendaHtml = v.dataAgenda
-                        ? `<span class="text-sky-400 font-semibold">${v.dataAgenda}</span>`
-                        : `<span class="text-text-muted italic">Não agendado</span>`;
+                    const chave = obterChaveClienteVale(v);
+                    if (!gruposClientes.has(chave)) {
+                        gruposClientes.set(chave, {
+                            chave,
+                            cliente: v.cliente || 'Cliente',
+                            cidade: v.cidade || '',
+                            cnpj: v.cnpj || '',
+                            vales: [],
+                            totalQtd: 0
+                        });
+                    }
+                    const g = gruposClientes.get(chave);
+                    g.vales.push({ ...v, _idx: idx });
+                    g.totalQtd += (v.qtd || 0);
+                    if (!g.cnpj && v.cnpj) g.cnpj = v.cnpj;
+                    if (!g.cidade && v.cidade) g.cidade = v.cidade;
+                });
+
+                const hojeTs = new Date().setHours(0, 0, 0, 0);
+                const htmlGrupos = Array.from(gruposClientes.values()).map(g => {
+                    const agendasMap = new Map();
+                    g.vales.forEach(v => {
+                        const agKey = v.dataAgenda ? v.dataAgenda.trim() : 'SEM_AGENDA';
+                        if (!agendasMap.has(agKey)) agendasMap.set(agKey, []);
+                        agendasMap.get(agKey).push(v);
+                    });
+
+                    const agendasOrdenadas = Array.from(agendasMap.entries()).sort((a, b) => {
+                        if (a[0] === 'SEM_AGENDA') return -1;
+                        if (b[0] === 'SEM_AGENDA') return 1;
+                        return converterDataBRParaTimestamp(a[0]) - converterDataBRParaTimestamp(b[0]);
+                    });
+
+                    const chaveEsc = g.chave.replace(/'/g, "\'");
+
+                    const blocosAgendasHtml = agendasOrdenadas.map(([agKey, listaAg]) => {
+                        const labelAg = agKey === 'SEM_AGENDA' ? 'Sem Agenda Definida' : `Agenda: ${agKey}`;
+                        const totalAgQtd = listaAg.reduce((acc, x) => acc + (x.qtd || 0), 0);
+                        const agEsc = agKey.replace(/'/g, "\'");
+
+                        const linhasHtml = listaAg.map(v => {
+                            const numExibido = v.numeroVale || `VP-${String(v._idx + 1).padStart(4, '0')}`;
+                            let valBadge = `<span class="text-text-muted text-[11px]">Sem validade</span>`;
+                            if (v.validade) {
+                                const vTs = converterDataBRParaTimestamp(v.validade);
+                                const diffDias = Math.ceil((vTs - hojeTs) / 86400000);
+                                if (vTs > 0 && diffDias < 0) {
+                                    valBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-500/15 text-red-400 border border-red-500/30">Vencido (${v.validade})</span>`;
+                                } else if (vTs > 0 && diffDias <= 7) {
+                                    valBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30">Vence ${v.validade}</span>`;
+                                } else {
+                                    valBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400">Val.: ${v.validade}</span>`;
+                                }
+                            }
+                            return `
+                            <div draggable="true"
+                                 ondragstart="iniciarArrastoVale(event, ${v.id}, '${chaveEsc}')"
+                                 class="px-3 py-2.5 bg-brand-panel border border-brand-border rounded-lg flex flex-wrap items-center justify-between gap-2 cursor-grab active:cursor-grabbing hover:border-sky-400/60 transition-colors">
+                                <div class="flex items-center gap-2.5 min-w-0 flex-wrap">
+                                    <span class="text-text-muted/60 select-none text-xs" title="Arraste para outra agenda deste cliente">⋮⋮</span>
+                                    <span class="font-mono font-bold text-xs text-brand-lightBlue">${numExibido}</span>
+                                    ${valBadge}
+                                    ${v.obs ? `<span class="text-xs text-text-muted truncate max-w-[260px]" title="${v.obs.replace(/"/g, '&quot;')}">• ${v.obs}</span>` : ''}
+                                </div>
+                                <div class="flex items-center gap-2.5 shrink-0">
+                                    <span class="px-2 py-0.5 rounded bg-red-500/15 text-brand-red font-bold text-xs">${v.qtd} pal.</span>
+                                    <div class="flex items-center gap-1">
+                                        <button onclick="editarValePallet(${v.id})" class="edit-only p-1 text-text-muted hover:text-sky-400 rounded transition-colors" title="Editar / Agendar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path></svg></button>
+                                        <button onclick="excluirValePallet(${v.id})" class="edit-only p-1 text-text-muted hover:text-emerald-500 rounded transition-colors" title="Confirmar Coleta / Baixar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></button>
+                                        <button onclick="removerValePalletDireto(${v.id})" class="edit-only p-1 text-text-muted hover:text-brand-red rounded transition-colors" title="Excluir Vale (sem baixar)"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
+                                    </div>
+                                </div>
+                            </div>`;
+                        }).join('');
+
+                        return `
+                        <div ondragover="permitirDropVale(event, '${chaveEsc}')"
+                             ondragleave="sairDropVale(event)"
+                             ondrop="soltarValeNaAgenda(event, '${chaveEsc}', '${agEsc}')"
+                             class="p-2.5 rounded-xl bg-brand-bg/60 border border-brand-border/80 transition-all space-y-2">
+                            <div class="flex items-center justify-between text-[11px] px-1">
+                                <span class="font-bold ${agKey === 'SEM_AGENDA' ? 'text-text-muted italic' : 'text-sky-400'}">${labelAg}</span>
+                                <span class="text-text-muted font-semibold">${listaAg.length} vale(s) • ${totalAgQtd} pallet(s)</span>
+                            </div>
+                            <div class="space-y-1.5">${linhasHtml}</div>
+                        </div>`;
+                    }).join('');
+
                     return `
-                    <tr class="item-hover transition-colors border-b border-brand-border">
-                        <td class="py-2.5 px-3 font-mono font-bold text-brand-lightBlue">${numExibido}</td>
-                        <td class="py-2.5 px-3 font-semibold text-text-main break-words">${v.cliente}</td>
-                        <td class="py-2.5 px-3 text-text-muted whitespace-nowrap">${v.cidade || '---'}</td>
-                        <td class="py-2.5 px-3">${agendaHtml}</td>
-                        <td class="py-2.5 px-3 text-text-muted max-w-[220px] break-words">${v.obs || '---'}</td>
-                        <td class="py-2.5 px-3 text-center font-bold text-brand-red">${v.qtd}</td>
-                        <td class="py-2.5 px-3 flex justify-center gap-1.5">
-                            <button onclick="editarValePallet(${v.id})" class="edit-only p-1 text-text-muted hover:text-sky-400 rounded transition-colors" title="Editar / Agendar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path></svg></button>
-                            <button onclick="excluirValePallet(${v.id})" class="edit-only p-1 text-text-muted hover:text-emerald-500 rounded transition-colors" title="Confirmar Coleta / Baixar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></button>
-                            <button onclick="removerValePalletDireto(${v.id})" class="edit-only p-1 text-text-muted hover:text-brand-red rounded transition-colors" title="Excluir Vale (sem baixar)"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
-                        </td>
-                    </tr>
-                `}).join('');
-                if(tbodyVales) tbodyVales.innerHTML = htmlCli;
+                    <div class="rounded-xl border border-brand-border bg-brand-bg/30 overflow-hidden">
+                        <div class="px-4 py-3 bg-brand-bg border-b border-brand-border flex flex-wrap items-center justify-between gap-2">
+                            <div class="flex items-center gap-2.5 flex-wrap min-w-0">
+                                <span class="text-sm font-bold text-text-main">${g.cliente}</span>
+                                ${g.cidade ? `<span class="text-xs text-text-muted">${g.cidade}</span>` : ''}
+                                ${g.cnpj ? `<span class="text-[11px] font-mono px-2 py-0.5 rounded bg-brand-panel border border-brand-border text-text-muted">${g.cnpj}</span>` : ''}
+                            </div>
+                            <div class="flex items-center gap-2 shrink-0">
+                                <span class="text-[11px] text-text-muted font-semibold">${g.vales.length} vale(s)</span>
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-500/15 text-brand-red border border-red-500/30">${g.totalQtd} pallets</span>
+                            </div>
+                        </div>
+                        <div class="p-3 space-y-2.5">
+                            ${blocosAgendasHtml}
+                            <div ondragover="permitirDropVale(event, '${chaveEsc}')"
+                                 ondragleave="sairDropVale(event)"
+                                 ondrop="soltarValeNaNovaAgenda(event, '${chaveEsc}')"
+                                 class="edit-only border border-dashed border-brand-border/80 rounded-lg py-2 px-3 text-center text-[11px] text-text-muted hover:border-sky-400 transition-colors">
+                                + Solte um vale de ${g.cliente} aqui para definir uma nova data de agenda
+                            </div>
+                        </div>
+                    </div>`;
+                }).join('');
+
+                if(tbodyVales) tbodyVales.innerHTML = htmlGrupos;
             }
 
             // Tabela Histórico de Coletas
@@ -5391,6 +5599,114 @@
             if(elQtdReg) elQtdReg.innerText = `${valesCliFiltrados.length}`;
             if(elColet) elColet.innerText = `${totalColetado} pallets • R$ ${totalValorColetado.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
         }
+
+
+        // ==========================================
+        // AGRUPAMENTO E DRAG & DROP DE VALES + FECHAR SUBMENUS COM ESC
+        // ==========================================
+        let valeArrastadoId = null;
+        let valeArrastadoClienteKey = null;
+
+        function obterChaveClienteVale(v) {
+            const cnpjDigits = String(v?.cnpj || '').replace(/\D/g, '');
+            if (cnpjDigits) return 'CNPJ_' + cnpjDigits;
+            return 'NOME_' + normalizarTextoTransp(v?.cliente || '');
+        }
+
+        function iniciarArrastoVale(e, valeId, clienteKey) {
+            valeArrastadoId = valeId;
+            valeArrastadoClienteKey = clienteKey;
+            if (e.dataTransfer) {
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', String(valeId));
+            }
+        }
+
+        function permitirDropVale(e, targetClienteKey) {
+            if (valeArrastadoClienteKey && valeArrastadoClienteKey === targetClienteKey) {
+                e.preventDefault();
+                if (e.currentTarget) e.currentTarget.classList.add('border-sky-400', 'bg-sky-500/10');
+            }
+        }
+
+        function sairDropVale(e) {
+            if (e.currentTarget) e.currentTarget.classList.remove('border-sky-400', 'bg-sky-500/10');
+        }
+
+        async function soltarValeNaAgenda(e, targetClienteKey, novaAgendaKey) {
+            e.preventDefault();
+            sairDropVale(e);
+            if (!exigirPermissaoEdicao()) return;
+            if (!valeArrastadoId || valeArrastadoClienteKey !== targetClienteKey) {
+                Swal.fire({ toast: true, position: 'top-end', icon: 'warning', title: 'Só é possível mover entre agendas do mesmo cliente/CNPJ.', showConfirmButton: false, timer: 2200 });
+                return;
+            }
+            const vale = bancoValePallets.find(v => v.id === valeArrastadoId);
+            valeArrastadoId = null;
+            valeArrastadoClienteKey = null;
+            if (!vale) return;
+
+            const novaData = novaAgendaKey === 'SEM_AGENDA' ? '' : novaAgendaKey;
+            if ((vale.dataAgenda || '') === novaData) return;
+            vale.dataAgenda = novaData;
+            await salvarTodosBancos();
+            renderValePallets();
+            Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: novaData ? `Agenda alterada para ${novaData}!` : 'Movido para Sem Agenda!', showConfirmButton: false, timer: 1800 });
+        }
+
+        async function soltarValeNaNovaAgenda(e, targetClienteKey) {
+            e.preventDefault();
+            sairDropVale(e);
+            if (!exigirPermissaoEdicao()) return;
+            if (!valeArrastadoId || valeArrastadoClienteKey !== targetClienteKey) return;
+            const vale = bancoValePallets.find(v => v.id === valeArrastadoId);
+            valeArrastadoId = null;
+            valeArrastadoClienteKey = null;
+            if (!vale) return;
+
+            const hojeISO = new Date().toISOString().split('T')[0];
+            const { value: novaDataISO } = await Swal.fire({
+                title: `Agendar Vale ${vale.numeroVale || ''}`,
+                html: `<input id="swal-drop-nova-agenda" type="date" class="minimal-input mt-2" value="${formatarDataBRParaISO(vale.dataAgenda || '') || hojeISO}">`,
+                showCancelButton: true,
+                confirmButtonColor: '#3b82f6',
+                cancelButtonColor: '#334155',
+                confirmButtonText: 'Agendar',
+                cancelButtonText: 'Cancelar',
+                preConfirm: () => document.getElementById('swal-drop-nova-agenda').value
+            });
+
+            if (novaDataISO) {
+                vale.dataAgenda = formatarDataInputParaBR(novaDataISO);
+                await salvarTodosBancos();
+                renderValePallets();
+                Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: `Agendado para ${vale.dataAgenda}!`, showConfirmButton: false, timer: 1800 });
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape') return;
+            const modaisIds = [
+                'modal-carregamento', 'modal-colar-pesos', 'modal-romaneio',
+                'modal-detalhes-transp', 'modal-detalhes-motorista',
+                'modal-detalhes-cliente', 'modal-notas-produto', 'modal-auth-firebase'
+            ];
+            for (const id of modaisIds) {
+                const el = document.getElementById(id);
+                if (el && !el.classList.contains('hidden')) {
+                    fecharModal(id);
+                    return;
+                }
+            }
+            const boxMot = document.getElementById('box-form-mot');
+            if (boxMot && !boxMot.classList.contains('hidden')) { cancelarEdicaoMotorista(true); return; }
+            const boxTr = document.getElementById('box-form-transp');
+            if (boxTr && !boxTr.classList.contains('hidden')) { cancelarEdicaoTransportadora(true); return; }
+            const drawer = document.getElementById('mobile-more-drawer');
+            if (drawer && !drawer.classList.contains('hidden')) { toggleMobileMoreMenu(false); return; }
+            const popCal = document.getElementById('popover-calendario-filtro');
+            if (popCal && !popCal.classList.contains('hidden')) { popCal.classList.add('hidden'); }
+        });
 
         function renderPallets() {}
 
@@ -5779,44 +6095,148 @@
         }
 
         function renderAbaEstatisticas(filtrados) {
-            let totNotas = filtrados.length; let totFrete = 0; let totMerc = 0; let totVols = 0;
-            let romsProcessados = {}; let transpStats = {}; 
+            let totNotas = filtrados.length;
+            let totFrete = 0, totMerc = 0, totVols = 0, totPeso = 0;
+            const romsProcessados = {};
+            const transpStats = {};
+            const motStats = {};
+            const cliStats = {};
+            const prodStats = {};
+            const cidadesSet = new Set();
 
             filtrados.forEach(item => {
-                totMerc += item.valorNF;
-                totVols += item.volume;
-                if (!romsProcessados[item.romaneio]) romsProcessados[item.romaneio] = { pallets: item.pallets || 0, frete: 0 };
-                
-                let t = item.transportador;
-                if(!transpStats[t]) transpStats[t] = { nfs: 0, frete: 0, pallets: 0, merc: 0, vols: 0 };
+                const vNF = Number(item.valorNF) || 0;
+                const vol = Number(item.volume) || 0;
+                const peso = Number(item.peso) || 0;
+                totMerc += vNF;
+                totVols += vol;
+                totPeso += peso;
+                if (item.clienteCidade) cidadesSet.add(extrairCidadeUF(item.clienteCidade));
+
+                if (!romsProcessados[item.romaneio]) {
+                    romsProcessados[item.romaneio] = {
+                        pallets: Number(item.pallets) || 0,
+                        pesoIni: Number(item.pesoInicial) || 0,
+                        pesoFin: Number(item.pesoFinal) || 0,
+                        pesoNF: 0,
+                        frete: 0,
+                        transp: item.transportador,
+                        mot: item.motorista || ''
+                    };
+                }
+                romsProcessados[item.romaneio].pesoNF += peso;
+
+                const t = item.transportador || 'NÃO INFORMADO';
+                if (!transpStats[t]) transpStats[t] = { nfs: 0, frete: 0, pallets: 0, merc: 0, vols: 0, peso: 0, roms: new Set() };
                 transpStats[t].nfs += 1;
-                transpStats[t].merc += item.valorNF;
-                transpStats[t].vols += item.volume;
+                transpStats[t].merc += vNF;
+                transpStats[t].vols += vol;
+                transpStats[t].peso += peso;
+                transpStats[t].roms.add(item.romaneio);
+
+                const mot = (item.motorista || '').trim();
+                if (mot) {
+                    if (!motStats[mot]) motStats[mot] = { nome: mot, transp: t, roms: new Set(), vols: 0, peso: 0, merc: 0 };
+                    motStats[mot].roms.add(item.romaneio);
+                    motStats[mot].vols += vol;
+                    motStats[mot].peso += peso;
+                    motStats[mot].merc += vNF;
+                }
+
+                const cliNome = extrairNomeClienteLimpo(item.clienteCidade || 'Cliente');
+                if (!cliStats[cliNome]) cliStats[cliNome] = { nome: cliNome, valor: 0, vols: 0, nfs: 0 };
+                cliStats[cliNome].valor += vNF;
+                cliStats[cliNome].vols += vol;
+                cliStats[cliNome].nfs += 1;
+
+                (item.produtosXML || []).forEach(p => {
+                    const pNome = (p.nome || 'Produto').trim();
+                    if (!prodStats[pNome]) prodStats[pNome] = { nome: pNome, qtd: 0, valor: 0 };
+                    prodStats[pNome].qtd += (Number(p.qtd) || 0);
+                    prodStats[pNome].valor += (Number(p.valor) || 0);
+                });
             });
 
             let totPallets = 0;
-            for(let rom in romsProcessados) {
+            let romsPesados = 0;
+            let saldoBalanca = 0;
+            const totalRoms = Object.keys(romsProcessados).length;
+
+            for (const rom in romsProcessados) {
                 const nfsDoRom = filtrados.filter(f => f.romaneio === rom);
-                let freteRom = nfsDoRom.reduce((acc, curr) => acc + (curr.freteIndividual || 0), 0);
+                const freteRom = nfsDoRom.reduce((acc, curr) => acc + (Number(curr.freteIndividual) || 0), 0);
                 totFrete += freteRom;
                 totPallets += romsProcessados[rom].pallets;
-                if(nfsDoRom.length > 0) {
-                    let tr = nfsDoRom[0].transportador;
+                if (nfsDoRom.length > 0) {
+                    const tr = nfsDoRom[0].transportador || 'NÃO INFORMADO';
                     transpStats[tr].frete += freteRom;
                     transpStats[tr].pallets += romsProcessados[rom].pallets;
                 }
+                const rInfo = romsProcessados[rom];
+                if (rInfo.pesoIni > 0 && rInfo.pesoFin > 0) {
+                    romsPesados++;
+                    saldoBalanca += ((rInfo.pesoFin - rInfo.pesoIni) - rInfo.pesoNF);
+                }
             }
 
-            let percGlobal = totMerc > 0 ? (totFrete / totMerc) * 100 : 0;
+            const percGlobal = totMerc > 0 ? (totFrete / totMerc) * 100 : 0;
+            const ticketMedioNF = totNotas > 0 ? (totMerc / totNotas) : 0;
+            const fretePorKg = totPeso > 0 ? (totFrete / totPeso) : 0;
+            const fretePorCx = totVols > 0 ? (totFrete / totVols) : 0;
+            const mediaCxsRom = totalRoms > 0 ? Math.round(totVols / totalRoms) : 0;
+            const mediaPalRom = totalRoms > 0 ? (totPallets / totalRoms).toFixed(1) : '0';
+            const mediaPesoRom = totalRoms > 0 ? (totPeso / totalRoms) : 0;
 
-            document.getElementById('est-total-volume').innerText = `${totVols.toLocaleString('pt-BR')}`;
-            document.getElementById('est-total-frete').innerText = `R$ ${totFrete.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
-            document.getElementById('est-total-pallets').innerText = `${totPallets.toLocaleString('pt-BR')}`;
-            document.getElementById('est-perc-frete').innerText = `${percGlobal.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits:2})}%`;
+            const elMerc = document.getElementById('est-total-merc');
+            if (elMerc) elMerc.innerText = `R$ ${totMerc.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+            const elTicket = document.getElementById('est-ticket-medio');
+            if (elTicket) elTicket.innerText = `Ticket médio: R$ ${ticketMedioNF.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / NF`;
+
+            document.getElementById('est-total-frete').innerText = `R$ ${totFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+            const elFMed = document.getElementById('est-frete-medios');
+            if (elFMed) elFMed.innerText = `R$ ${fretePorKg.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/kg • R$ ${fretePorCx.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/cx`;
+
+            document.getElementById('est-total-volume').innerText = `${totVols.toLocaleString('pt-BR')} cxs`;
+            const elPeso = document.getElementById('est-total-peso');
+            if (elPeso) elPeso.innerText = `${totPeso.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} kg • ${totPallets.toLocaleString('pt-BR')} pallets`;
+
+            document.getElementById('est-perc-frete').innerText = `${percGlobal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`;
+            document.getElementById('est-total-pallets').innerText = `${totPallets.toLocaleString('pt-BR')} pallets • ${totalRoms} romaneio(s)`;
+
+            const elOcup = document.getElementById('est-ocupacao-media');
+            if (elOcup) elOcup.innerText = `${mediaCxsRom} cxs • ${mediaPalRom} pal.`;
+            const elPesoRom = document.getElementById('est-peso-medio-rom');
+            if (elPesoRom) elPesoRom.innerText = `${mediaPesoRom.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} kg / romaneio`;
+
+            const elBalSaldo = document.getElementById('est-balanca-saldo');
+            if (elBalSaldo) {
+                elBalSaldo.innerText = `${saldoBalanca > 0 ? '+' : ''}${saldoBalanca.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} kg`;
+                elBalSaldo.className = `text-lg font-bold mt-1 ${Math.abs(saldoBalanca) > 0 ? 'text-amber-400' : 'text-emerald-400'}`;
+            }
+            const elBalQtd = document.getElementById('est-balanca-qtd');
+            if (elBalQtd) elBalQtd.innerText = `${romsPesados} de ${totalRoms} romaneio(s) pesados`;
+
+            const totCapFab = bancoCarregamentos.reduce((a, c) => a + (Number(c.pesoCapacidadeFabrica) || 500000), 0);
+            const totCarregFab = bancoCarregamentos.reduce((a, c) => a + (Number(c.pesoCarregado) || 0), 0);
+            const aprovFab = totCapFab > 0 ? Math.round((totCarregFab / totCapFab) * 100) : 0;
+            const elAprov = document.getElementById('est-aprov-fabrica');
+            if (elAprov) elAprov.innerText = `${aprovFab}%`;
+            const elCarregRes = document.getElementById('est-carreg-resumo');
+            if (elCarregRes) elCarregRes.innerText = `${totCarregFab.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} kg carregados`;
+
+            const valesPend = bancoValePallets.reduce((a, v) => a + (Number(v.qtd) || 0), 0);
+            const valesColet = bancoHistoricoColetas.reduce((a, h) => a + (Number(h.qtd) || 0), 0);
+            const elValesRes = document.getElementById('est-vales-resumo');
+            if (elValesRes) elValesRes.innerText = `${valesPend} pal. (${bancoValePallets.length} vales)`;
+            const elValesCol = document.getElementById('est-vales-coletados');
+            if (elValesCol) elValesCol.innerText = `${valesColet} pallets coletados`;
+
             const elNotas = document.getElementById('est-total-notas');
             if (elNotas) elNotas.innerText = `${totNotas.toLocaleString('pt-BR')}`;
+            const elCid = document.getElementById('est-total-cidades');
+            if (elCid) elCid.innerText = `${cidadesSet.size} cidade(s) atendida(s)`;
 
-            const entriesOrdenadas = Object.entries(transpStats).sort((a,b) => b[1].vols - a[1].vols);
+            const entriesOrdenadas = Object.entries(transpStats).sort((a, b) => b[1].vols - a[1].vols);
             cacheExportEstatisticas = entriesOrdenadas;
             const maxVol = Math.max(1, ...entriesOrdenadas.map(([, d]) => d.vols));
             const barrasEl = document.getElementById('est-barras-transp');
@@ -5827,7 +6247,7 @@
                     barrasEl.innerHTML = entriesOrdenadas.slice(0, 6).map(([nome, d]) => {
                         const hPct = Math.max(12, Math.round((d.vols / maxVol) * 100));
                         return `
-                        <div onclick="abrirMenuRomaneiosTransportadora(event, '${nome.replace(/'/g, "\\'")}')" class="flex-1 flex flex-col items-center justify-end h-full cursor-pointer group" title="${nome}: ${d.vols} caixas">
+                        <div onclick="abrirMenuRomaneiosTransportadora(event, '${nome.replace(/'/g, "\'")}')" class="flex-1 flex flex-col items-center justify-end h-full cursor-pointer group" title="${nome}: ${d.vols} caixas">
                             <span class="text-[10px] font-bold text-text-main mb-1">${d.vols}</span>
                             <div class="w-full max-w-[38px] bg-sky-500/75 group-hover:bg-sky-400 rounded-t-md transition-all" style="height: ${hPct}%"></div>
                             <span class="text-[10px] text-text-muted mt-1.5 truncate max-w-[60px]">${nome}</span>
@@ -5836,20 +6256,99 @@
                 }
             }
 
+            const topCliEl = document.getElementById('est-top-clientes');
+            if (topCliEl) {
+                const topCli = Object.values(cliStats).sort((a, b) => b.valor - a.valor).slice(0, 5);
+                const maxCliVal = Math.max(1, ...topCli.map(c => c.valor));
+                topCliEl.innerHTML = topCli.length === 0
+                    ? `<p class="text-xs text-text-muted">Sem dados no filtro.</p>`
+                    : topCli.map(c => {
+                        const pct = Math.max(6, Math.round((c.valor / maxCliVal) * 100));
+                        return `
+                        <div>
+                            <div class="flex items-center justify-between text-xs mb-1">
+                                <span class="font-semibold text-text-main truncate pr-2">${c.nome}</span>
+                                <span class="font-mono font-bold text-sky-400 shrink-0">R$ ${c.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                            </div>
+                            <div class="w-full h-1.5 bg-brand-bg rounded-full overflow-hidden">
+                                <div class="h-full bg-sky-500 rounded-full" style="width: ${pct}%"></div>
+                            </div>
+                        </div>`;
+                    }).join('');
+            }
+
+            const topProdEl = document.getElementById('est-top-produtos');
+            if (topProdEl) {
+                const topProd = Object.values(prodStats).sort((a, b) => b.valor - a.valor).slice(0, 5);
+                const maxProdVal = Math.max(1, ...topProd.map(p => p.valor));
+                topProdEl.innerHTML = topProd.length === 0
+                    ? `<p class="text-xs text-text-muted">Importe XMLs ou selecione romaneios com itens.</p>`
+                    : topProd.map(p => {
+                        const pct = Math.max(6, Math.round((p.valor / maxProdVal) * 100));
+                        return `
+                        <div>
+                            <div class="flex items-center justify-between text-xs mb-1">
+                                <span class="font-semibold text-text-main truncate pr-2">${p.nome}</span>
+                                <span class="font-mono font-bold text-emerald-400 shrink-0">${p.qtd.toLocaleString('pt-BR')} un • R$ ${p.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                            </div>
+                            <div class="w-full h-1.5 bg-brand-bg rounded-full overflow-hidden">
+                                <div class="h-full bg-emerald-500 rounded-full" style="width: ${pct}%"></div>
+                            </div>
+                        </div>`;
+                    }).join('');
+            }
+
             const tbTransp = document.getElementById('tbody-est-transp');
             tbTransp.innerHTML = entriesOrdenadas.map(([nome, d]) => {
-                let pFrete = d.merc > 0 ? (d.frete / d.merc)*100 : 0;
+                const pFrete = d.merc > 0 ? (d.frete / d.merc) * 100 : 0;
+                const rKg = d.peso > 0 ? (d.frete / d.peso) : 0;
                 return `
                 <tr class="item-hover transition-colors border-b border-brand-border">
-                    <td onclick="abrirMenuRomaneiosTransportadora(event, '${nome.replace(/'/g, "\\'")}')" class="py-2.5 px-3 font-bold text-sky-400 hover:underline cursor-pointer" title="${obterNomeCompletoTransportadora(nome)}">${nome}</td>
-                    <td class="py-2.5 px-3 text-right text-text-muted font-medium">${d.nfs}</td>
-                    <td class="py-2.5 px-3 text-right text-text-muted font-medium">${d.vols}</td>
-                    <td class="py-2.5 px-3 text-right text-text-muted font-medium">${d.pallets}</td>
-                    <td class="py-2.5 px-3 text-right text-text-main font-semibold">R$ ${d.merc.toLocaleString('pt-BR', {minimumFractionDigits:2})}</td>
-                    <td class="py-2.5 px-3 text-right text-sky-400 font-bold">R$ ${d.frete.toLocaleString('pt-BR', {minimumFractionDigits:2})}</td>
-                    <td class="py-2.5 px-3 text-right font-bold text-text-main">${pFrete.toFixed(2)}%</td>
+                    <td onclick="abrirMenuRomaneiosTransportadora(event, '${nome.replace(/'/g, "\'")}')" class="py-2.5 px-4 font-bold text-sky-400 hover:underline cursor-pointer" title="${obterNomeCompletoTransportadora(nome)}">${nome}</td>
+                    <td class="py-2.5 px-4 text-right text-text-muted font-medium">${d.roms.size}</td>
+                    <td class="py-2.5 px-4 text-right text-text-muted font-medium">${d.nfs}</td>
+                    <td class="py-2.5 px-4 text-right text-text-muted font-medium">${d.vols.toLocaleString('pt-BR')}</td>
+                    <td class="py-2.5 px-4 text-right text-text-muted font-medium">${d.pallets.toLocaleString('pt-BR')}</td>
+                    <td class="py-2.5 px-4 text-right text-text-muted font-medium">${d.peso.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}</td>
+                    <td class="py-2.5 px-4 text-right text-text-main font-semibold">R$ ${d.merc.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                    <td class="py-2.5 px-4 text-right text-sky-400 font-bold">R$ ${d.frete.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                    <td class="py-2.5 px-4 text-right text-text-muted font-mono">R$ ${rKg.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td class="py-2.5 px-4 text-right font-bold text-text-main">${pFrete.toFixed(2)}%</td>
                 </tr>
             `}).join('');
+
+            const tfTransp = document.getElementById('tfoot-est-transp');
+            if (tfTransp) {
+                tfTransp.innerHTML = entriesOrdenadas.length === 0 ? '' : `
+                <tr>
+                    <td class="py-3 px-4 uppercase">Total Geral</td>
+                    <td class="py-3 px-4 text-right">${totalRoms}</td>
+                    <td class="py-3 px-4 text-right">${totNotas}</td>
+                    <td class="py-3 px-4 text-right">${totVols.toLocaleString('pt-BR')}</td>
+                    <td class="py-3 px-4 text-right">${totPallets.toLocaleString('pt-BR')}</td>
+                    <td class="py-3 px-4 text-right">${totPeso.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}</td>
+                    <td class="py-3 px-4 text-right">R$ ${totMerc.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                    <td class="py-3 px-4 text-right text-sky-400">R$ ${totFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                    <td class="py-3 px-4 text-right font-mono">R$ ${fretePorKg.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td class="py-3 px-4 text-right">${percGlobal.toFixed(2)}%</td>
+                </tr>`;
+            }
+
+            const tbMot = document.getElementById('tbody-est-motoristas');
+            if (tbMot) {
+                const motOrd = Object.values(motStats).sort((a, b) => b.merc - a.merc);
+                tbMot.innerHTML = motOrd.length === 0
+                    ? `<tr><td colspan="6" class="py-6 text-center text-text-muted">Nenhum motorista vinculado nos romaneios filtrados.</td></tr>`
+                    : motOrd.map(m => `
+                    <tr class="item-hover transition-colors border-b border-brand-border">
+                        <td onclick="abrirMenuRomaneiosMotorista(event, '${m.nome.replace(/'/g, "\'")}', '${m.transp.replace(/'/g, "\'")}')" class="py-2.5 px-4 font-bold text-text-main hover:text-sky-400 hover:underline cursor-pointer">${m.nome}</td>
+                        <td class="py-2.5 px-4 text-sky-400 font-semibold">${m.transp}</td>
+                        <td class="py-2.5 px-4 text-right text-text-muted">${m.roms.size}</td>
+                        <td class="py-2.5 px-4 text-right text-text-muted">${m.vols.toLocaleString('pt-BR')}</td>
+                        <td class="py-2.5 px-4 text-right text-text-muted">${m.peso.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}</td>
+                        <td class="py-2.5 px-4 text-right font-semibold text-text-main">R$ ${m.merc.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                    </tr>`).join('');
+            }
         }
 
         function toggleAccordion(id) {
