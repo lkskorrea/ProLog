@@ -5733,27 +5733,21 @@
             if (lista.length === 0) return;
             const clienteNome = lista[0].cliente || 'Cliente';
             const dataAtualISO = agKey === 'SEM_AGENDA' ? '' : formatarDataBRParaISO(agKey);
-            const validadeAtualISO = lista[0].validade ? formatarDataBRParaISO(lista[0].validade) : '';
 
             const { value: formValues } = await Swal.fire({
                 title: `Editar Bloco de Vales`,
                 html: `
                     <div class="text-left space-y-3 mt-2">
                         <p class="text-xs opacity-80">Cliente: <strong>${clienteNome}</strong> • <strong>${lista.length} vale(s)</strong> (${lista.reduce((s, x) => s + (x.qtd || 0), 0)} pallets)</p>
-                        <div class="grid grid-cols-2 gap-2.5">
-                            <div>
-                                <label class="block text-xs font-semibold mb-1">Data de Agenda (Bloco)</label>
-                                <input id="swal-edit-bloco-agenda" type="date" class="minimal-input" value="${dataAtualISO}">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold mb-1">Validade (opcional p/ todos)</label>
-                                <input id="swal-edit-bloco-validade" type="date" class="minimal-input" value="${validadeAtualISO}">
-                            </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Data de Agenda (Bloco)</label>
+                            <input id="swal-edit-bloco-agenda" type="date" class="minimal-input" value="${dataAtualISO}">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold mb-1">Observação (deixe vazio para manter individual)</label>
                             <input id="swal-edit-bloco-obs" type="text" class="minimal-input" placeholder="Aplicar observação a todo o bloco...">
                         </div>
+                        <p class="text-[11px] text-text-muted italic">A validade é alterada individualmente em cada vale.</p>
                     </div>
                 `,
                 showCancelButton: true,
@@ -5763,17 +5757,14 @@
                 cancelButtonText: 'Cancelar',
                 preConfirm: () => ({
                     agRaw: document.getElementById('swal-edit-bloco-agenda').value,
-                    valRaw: document.getElementById('swal-edit-bloco-validade').value,
                     obs: document.getElementById('swal-edit-bloco-obs').value.trim()
                 })
             });
 
             if (formValues) {
                 const novaAg = formValues.agRaw ? formatarDataInputParaBR(formValues.agRaw) : '';
-                const novaVal = formValues.valRaw ? formatarDataInputParaBR(formValues.valRaw) : '';
                 lista.forEach(v => {
                     v.dataAgenda = novaAg;
-                    if (formValues.valRaw) v.validade = novaVal;
                     if (formValues.obs) v.obs = formValues.obs;
                 });
                 renderValePallets();
@@ -6377,7 +6368,7 @@
                         <div class="flex items-center gap-6 mt-4 pt-3 border-t border-brand-border w-full text-xs flex-wrap">
                             <div class="flex items-center space-x-6 shrink-0">
                                 <div class="flex items-center"><span class="font-semibold text-text-muted uppercase mr-1.5">Volume:</span><span class="font-bold text-text-main">${dados.totalVolume} cxs${dados.totalUnidades > 0 ? ` / ${dados.totalUnidades} un` : ''}</span></div>
-                                <div class="flex items-center gap-2"><span class="font-semibold text-text-muted uppercase">Pallets:</span><span class="font-bold text-text-main">${dados.pallets} und</span>${calcularBadgeCubagemRomaneio(dados)}</div>
+                                <div class="flex items-center"><span class="font-semibold text-text-muted uppercase mr-1.5">Pallets:</span><span class="font-bold text-text-main">${dados.pallets} und</span></div>
                             </div>
                             
                             <div class="flex items-center space-x-6 ml-auto shrink-0">
@@ -9914,29 +9905,6 @@
             try { localStorage.removeItem('savencia_auditoria_v1'); } catch (e) {}
             abrirModalAuditoria();
             salvarDadosNoFirebase();
-        }
-
-        // ==========================================
-        // 5. SIMULADOR DE OCUPAÇÃO / CUBAGEM NO ROMANEIO
-        // ==========================================
-        function calcularBadgeCubagemRomaneio(dados) {
-            if (!dados || !Array.isArray(dados.notas)) return '';
-            let palletsTeoricos = 0;
-            let itensMapeados = 0;
-            dados.notas.forEach(n => {
-                (n.produtosXML || []).forEach(item => {
-                    const sku = String(item.cProd || '').trim().toUpperCase();
-                    const nomeNorm = normalizarTextoTransp(item.nome || '');
-                    const cad = bancoProdutos.find(bp => (sku && bp.sku === sku) || (nomeNorm && normalizarTextoTransp(bp.nome) === nomeNorm));
-                    if (cad && cad.qtdPallets > 0) {
-                        palletsTeoricos += ((Number(item.qtd) || 0) / cad.qtdPallets);
-                        itensMapeados++;
-                    }
-                });
-            });
-            if (itensMapeados === 0 || palletsTeoricos <= 0) return '';
-            const teoricoFmt = palletsTeoricos.toFixed(1).replace('.', ',');
-            return `<span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-400 border border-indigo-500/30 font-semibold" title="Estimativa de pallets pela cubagem dos produtos cadastrados">Teórico: ~${teoricoFmt} pal.</span>`;
         }
 
         // ==========================================
