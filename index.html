@@ -178,6 +178,7 @@
                 transportadoras: bancoTransportadoras,
                 produtos: bancoProdutos,
                 valePallets: bancoValePallets,
+                historicoColetas: bancoHistoricoColetas,
                 valeTransportadoras: bancoValeTransportadoras,
                 carregamentos: bancoCarregamentos
             };
@@ -413,7 +414,7 @@
                 <svg class="w-4 h-4 opacity-85 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"></path></svg>
                 Transportadoras
             </button>
-            <button onclick="mudarAba('clientes')" id="tab-clientes" class="admin-only whitespace-nowrap px-3 py-1.5 rounded-lg transition-all text-xs flex items-center gap-1.5 tab-inactive">
+            <button onclick="mudarAba('clientes')" id="tab-clientes" style="display: none !important;" class="hidden whitespace-nowrap px-3 py-1.5 rounded-lg transition-all text-xs items-center gap-1.5 tab-inactive">
                 <svg class="w-4 h-4 opacity-85 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"></path></svg>
                 Clientes
             </button>
@@ -422,10 +423,7 @@
                 Produtos
             </button>
             <span class="h-4 w-px bg-brand-border mx-1 shrink-0"></span>
-            <button onclick="mudarAba('pallets')" id="tab-pallets" class="whitespace-nowrap px-3 py-1.5 rounded-lg transition-all text-xs flex items-center gap-1.5 tab-inactive">
-                <svg class="w-4 h-4 opacity-85 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"></path></svg>
-                Pallets
-            </button>
+
             <button onclick="mudarAba('valepallets')" id="tab-valepallets" class="whitespace-nowrap px-3 py-1.5 rounded-lg transition-all text-xs flex items-center gap-1.5 tab-inactive">
                 <svg class="w-4 h-4 opacity-85 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"></path></svg>
                 Vale Pallets
@@ -437,9 +435,9 @@
             <button id="btn-mobile-mode" onclick="toggleMobileMode()" class="hidden" title="Alternar Modo Mobile">
                 <span id="label-mobile-mode">Mobile</span>
             </button>
-            <button id="btn-auth-status" onclick="abrirModalAuthFirebase()" class="px-2.5 sm:px-3 py-1.5 rounded-lg border border-brand-border bg-brand-bg hover:border-sky-400 transition-colors text-xs font-semibold text-text-main flex items-center gap-1.5 whitespace-nowrap" title="Login / Conta / Somente Visualização">
+            <button id="btn-auth-status" onclick="abrirModalAuthFirebase()" class="px-2.5 sm:px-3 py-1.5 rounded-lg border border-brand-border bg-brand-bg hover:border-sky-400 transition-colors text-xs font-semibold text-text-main flex items-center gap-1.5 whitespace-nowrap" title="Login / Conta">
                 <span id="dot-auth-status" class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
-                <span id="label-auth-status">Visualização • Entrar</span>
+                <span id="label-auth-status">Entrar</span>
                 <span id="badge-pendentes-admin" class="hidden ml-0.5 px-1.5 py-0.2 rounded-full bg-red-500 text-white text-[10px] font-bold">0</span>
             </button>
 
@@ -458,9 +456,14 @@
             </div>
 
             <div id="filtro-container" class="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 lg:border-l border-brand-border lg:pl-3 shrink-0" style="display: none;">
-                <select id="select-filtro-data" onchange="setFiltroData(this.value)" class="bg-brand-bg border border-brand-border rounded-lg outline-none text-xs font-medium cursor-pointer text-text-main py-1.5 px-2.5 status-select w-full sm:w-auto sm:min-w-[125px] sm:max-w-[165px]">
-                    <option value="">Datas</option>
-                </select>
+                <input type="hidden" id="select-filtro-data" value="">
+                <button type="button" id="btn-filtro-data" onclick="abrirCalendarioFiltro('principal', this)" class="bg-brand-bg border border-brand-border hover:border-sky-400 rounded-lg text-xs font-medium cursor-pointer text-text-main py-1.5 px-2.5 w-full sm:w-auto sm:min-w-[135px] flex items-center justify-between gap-2 transition-colors">
+                    <span class="flex items-center gap-1.5 truncate">
+                        <svg class="w-3.5 h-3.5 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span id="label-filtro-data" class="truncate">Todas as Datas</span>
+                    </span>
+                    <svg class="w-3.5 h-3.5 text-text-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
                 <select id="select-filtro-transp" onchange="setFiltroTransp(this.value)" class="bg-brand-bg border border-brand-border rounded-lg outline-none text-xs font-medium cursor-pointer text-text-main py-1.5 px-2.5 status-select w-full sm:w-auto sm:min-w-[135px] sm:max-w-[180px]">
                     <option value="">Transportadoras</option>
                 </select>
@@ -676,13 +679,17 @@
                         <button type="button" onclick="cancelarEdicaoTransportadora(true)" class="text-xs text-text-muted hover:text-text-main">&times; Fechar</button>
                     </div>
                     <form id="form-transportadoras" onsubmit="salvarTransportadora(event)" class="grid grid-cols-1 md:grid-cols-12 gap-3 items-end">
-                        <div class="md:col-span-6">
+                        <div class="md:col-span-4">
                             <label class="block text-xs font-medium text-text-muted mb-1">Razão Social</label>
                             <input required type="text" id="transp-nome" placeholder="Ex: TRANSFRIO LOGÍSTICA LTDA" class="minimal-input uppercase">
                         </div>
-                        <div class="md:col-span-4">
-                            <label class="block text-xs font-medium text-text-muted mb-1">Apelido (Nome da Pasta)</label>
+                        <div class="md:col-span-3">
+                            <label class="block text-xs font-medium text-text-muted mb-1">Nome Padrão (Apelido)</label>
                             <input required type="text" id="transp-apelido" placeholder="Ex: TRANSFRIO" class="minimal-input uppercase">
+                        </div>
+                        <div class="md:col-span-3">
+                            <label class="block text-xs font-medium text-text-muted mb-1">Tags para Unificação (separadas por vírgula)</label>
+                            <input type="text" id="transp-tags" placeholder="Ex: TRANS FRIO, TF LOG, TRANSFRIO RJ" class="minimal-input uppercase">
                         </div>
                         <div class="md:col-span-2 flex justify-end gap-2">
                             <button type="button" onclick="cancelarEdicaoTransportadora(true)" id="btn-cancelar-transp" class="px-3 py-2.5 bg-brand-bg text-text-muted text-xs font-semibold rounded-xl hidden border border-brand-border">Cancelar</button>
@@ -828,136 +835,56 @@
                 </div>
             </div>
 
-            <!-- ABA 5: ESTOQUE PALLETS -->
-            <div id="view-pallets" class="p-3 sm:p-5 lg:p-6 w-full max-w-[1600px] mx-auto hidden">
-                <div class="flex items-center justify-between gap-2 mb-5">
-                    <h2 class="text-lg font-bold tracking-tight text-text-main">Estoque de Pallets</h2>
-                    <button onclick="mudarAba('valepallets')" class="px-3.5 py-2 rounded-lg text-xs font-semibold bg-brand-panel hover:bg-brand-blue hover:text-white text-text-main border border-brand-border transition-colors flex items-center gap-1.5">
-                        Vale Pallets
-                    </button>
-                </div>
-                
-                <div class="mobile-2col-grid grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-5">
-                    <div class="bg-brand-panel rounded-xl p-4 border border-brand-border flex flex-col justify-between">
-                        <p class="text-[11px] font-medium text-text-muted mb-1.5">Saldo Base</p>
-                        <input type="number" id="input-saldo-base" onchange="atualizarEstoquePallets()" class="bg-brand-bg text-lg font-bold text-text-main border border-brand-border rounded-lg px-3 py-1 outline-none focus:border-brand-blue" placeholder="0">
-                    </div>
-                    <div class="bg-brand-panel rounded-xl p-4 border border-brand-border">
-                        <p class="text-[11px] font-medium text-text-muted mb-1">Em Romaneios</p>
-                        <p class="text-2xl font-bold text-text-main" id="kp-pallets-rua">0</p>
-                    </div>
-                    <div class="bg-brand-panel rounded-xl p-4 border border-brand-border">
-                        <p class="text-[11px] font-medium text-text-muted mb-1">Em Vales</p>
-                        <p class="text-2xl font-bold text-text-main" id="kp-pallets-vales">0</p>
-                    </div>
-                    <div class="bg-brand-blue rounded-xl p-4 flex flex-col justify-between">
-                        <p class="text-[11px] font-medium text-white/80">Disponível</p>
-                        <p class="text-3xl font-bold text-white" id="kp-pallets-disponivel">0</p>
-                    </div>
-                </div>
-
-                <div class="bg-brand-panel rounded-xl p-5 border border-brand-border flex flex-col">
-                    <h3 class="text-sm font-bold text-text-main mb-3">Movimentação Diária</h3>
-                    <div class="overflow-x-auto flex-1">
-                        <table class="w-full text-left text-xs">
-                            <thead class="text-text-muted border-b border-brand-border bg-brand-bg">
-                                <tr>
-                                    <th class="py-3 px-4 font-semibold uppercase text-[10px]">Data Saída</th>
-                                    <th class="py-3 px-4 font-semibold uppercase text-[10px] text-right">Pallets Carregados</th>
-                                    <th class="py-3 px-4 font-semibold uppercase text-[10px] text-right">Estoque Restante no Dia</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody-pallets-diario" class="divide-y divide-brand-border"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
             <!-- ABA 6: VALE PALLETS -->
             <div id="view-valepallets" class="p-3 sm:p-5 lg:p-6 w-full max-w-[1600px] mx-auto hidden">
                 <div class="flex items-center justify-between gap-4 mb-5">
-                    <h2 class="text-lg font-bold tracking-tight text-text-main">Vale Pallets</h2>
+                    <h2 class="text-lg font-bold tracking-tight text-text-main">Vale Pallets — Clientes</h2>
+                    <button onclick="exportarExcelVales()" class="bg-brand-panel hover:bg-brand-blue hover:text-white text-text-main border border-brand-border px-3.5 py-2 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 whitespace-nowrap">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Excel
+                    </button>
                 </div>
 
                 <!-- KPIs Vale Pallets -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
                     <div class="bg-brand-panel rounded-xl p-4 border border-brand-border">
-                        <p class="text-[11px] font-medium text-text-muted mb-1">Clientes</p>
-                        <p class="text-2xl font-bold text-text-main" id="kp-vales-clientes">0 pallets</p>
+                        <p class="text-[11px] font-medium text-text-muted mb-1">Pallets em Vales (Clientes)</p>
+                        <p class="text-2xl font-bold text-sky-400" id="kp-vales-clientes">0 pallets</p>
                     </div>
                     <div class="bg-brand-panel rounded-xl p-4 border border-brand-border">
-                        <p class="text-[11px] font-medium text-text-muted mb-1">Transportadoras</p>
-                        <p class="text-2xl font-bold text-text-main" id="kp-vales-transportadoras">0 pallets</p>
+                        <p class="text-[11px] font-medium text-text-muted mb-1">Vales Pendentes</p>
+                        <p class="text-2xl font-bold text-text-main" id="kp-vales-qtd-registros">0</p>
                     </div>
                     <div class="bg-brand-panel rounded-xl p-4 border border-brand-border">
-                        <p class="text-[11px] font-medium text-text-muted mb-1">Total Pendente</p>
-                        <p class="text-2xl font-bold text-sky-400" id="kp-vales-total-geral">0 pallets</p>
+                        <p class="text-[11px] font-medium text-text-muted mb-1">Pallets Coletados (Histórico)</p>
+                        <p class="text-2xl font-bold text-emerald-400" id="kp-vales-coletados">0 pallets</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-4 sm:gap-5">
-                    <!-- Bloco Superior: Controle de Pallets com as Transportadoras -->
+                <div class="space-y-5">
                     <div class="bg-brand-panel rounded-xl p-5 border border-brand-border flex flex-col min-w-0">
-                        <h3 class="text-sm font-bold text-text-main mb-3">Transportadoras</h3>
-                        <form id="form-vale-transportadora" onsubmit="salvarValeTransportadora(event)" class="edit-only grid grid-cols-1 sm:grid-cols-12 gap-2.5 mb-4 items-end">
-                            <div class="sm:col-span-3">
-                                <label class="block text-[10px] font-medium text-text-muted mb-1">Nº Controle</label>
-                                <input type="text" id="vale-transp-num-controle" required placeholder="CP-0001" class="minimal-input py-2 px-3 text-xs font-mono font-bold bg-brand-bg border-brand-border">
-                            </div>
-                            <div class="sm:col-span-4">
-                                <label class="block text-[10px] font-medium text-text-muted mb-1">Transportadora</label>
-                                <input type="text" list="datalist-transp-vale" id="vale-transp-nome" required placeholder="Transportadora..." class="minimal-input py-2 px-3 text-xs bg-brand-bg border-brand-border">
-                                <datalist id="datalist-transp-vale"></datalist>
-                            </div>
-                            <div class="sm:col-span-3">
-                                <label class="block text-[10px] font-medium text-text-muted mb-1">Referência</label>
-                                <input type="text" id="vale-transp-obs" placeholder="Romaneio / Mot." class="minimal-input py-2 px-3 text-xs bg-brand-bg border-brand-border">
-                            </div>
-                            <div class="sm:col-span-2">
-                                <label class="block text-[10px] font-medium text-text-muted mb-1">Qtd</label>
-                                <input type="number" id="vale-transp-qtd" required min="1" placeholder="0" class="minimal-input py-2 px-2 text-xs bg-brand-bg border-brand-border">
-                            </div>
-                            <div class="sm:col-span-12 flex justify-end">
-                                <button type="submit" class="bg-amber-500 hover:bg-amber-400 text-slate-950 px-5 py-2 rounded-xl text-xs font-semibold transition-colors">Registrar</button>
-                            </div>
-                        </form>
-
-                        <div class="overflow-x-auto w-full border border-brand-border rounded-xl">
-                            <table class="w-full text-left text-xs">
-                                <thead class="text-text-muted border-b border-brand-border bg-brand-bg">
-                                    <tr>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Nº Controle</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Data</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Transportadora</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px]">Referência</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] text-center whitespace-nowrap">Qtd</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] text-center whitespace-nowrap">Baixar</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody-vale-transportadoras" class="divide-y divide-brand-border"></tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Bloco Inferior: Vale Pallets por Cliente -->
-                    <div class="bg-brand-panel rounded-xl p-5 border border-brand-border flex flex-col min-w-0">
-                        <h3 class="text-sm font-bold text-text-main mb-3">Clientes</h3>
+                        <h3 class="text-sm font-bold text-text-main mb-3">Registro de Vales de Clientes</h3>
                         <form id="form-vale-pallet" onsubmit="salvarValePallet(event)" class="edit-only grid grid-cols-1 sm:grid-cols-12 gap-2.5 mb-4 items-end">
-                            <div class="sm:col-span-3">
-                                <label class="block text-[10px] font-medium text-text-muted mb-1">Nº Vale</label>
+                            <div class="sm:col-span-2">
+                                <label class="block text-[10px] font-medium text-text-muted mb-1">Número do Vale</label>
                                 <input type="text" id="vale-numero" required placeholder="VP-0001" class="minimal-input py-2 px-3 text-xs font-mono font-bold bg-brand-bg border-brand-border">
                             </div>
-                            <div class="sm:col-span-5">
-                                <label class="block text-[10px] font-medium text-text-muted mb-1">Cliente</label>
-                                <input type="text" list="datalist-clientes-vale" id="vale-cliente" required placeholder="Nome do cliente..." class="minimal-input py-2 px-3 text-xs bg-brand-bg border-brand-border">
+                            <div class="sm:col-span-4">
+                                <label class="block text-[10px] font-medium text-text-muted mb-1">Nome do Cliente</label>
+                                <input type="text" list="datalist-clientes-vale" id="vale-cliente" oninput="aoSelecionarClienteVale(this.value)" required placeholder="Nome do cliente..." class="minimal-input py-2 px-3 text-xs bg-brand-bg border-brand-border">
                                 <datalist id="datalist-clientes-vale"></datalist>
                             </div>
                             <div class="sm:col-span-2">
-                                <label class="block text-[10px] font-medium text-text-muted mb-1">Qtd</label>
+                                <label class="block text-[10px] font-medium text-text-muted mb-1">Cidade / UF</label>
+                                <input type="text" id="vale-cidade" placeholder="CIDADE/UF" class="minimal-input py-2 px-3 text-xs uppercase bg-brand-bg border-brand-border">
+                                <input type="hidden" id="vale-cnpj" value="">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-[10px] font-medium text-text-muted mb-1">Quantidade</label>
                                 <input type="number" id="vale-qtd" required min="1" placeholder="0" class="minimal-input py-2 px-3 text-xs bg-brand-bg border-brand-border">
                             </div>
                             <div class="sm:col-span-2">
-                                <button type="submit" class="w-full bg-brand-red hover:bg-red-500 text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors">Criar</button>
+                                <button type="submit" class="w-full bg-brand-red hover:bg-red-500 text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors">Criar Vale</button>
                             </div>
                         </form>
                         
@@ -965,14 +892,36 @@
                             <table class="w-full text-left text-xs">
                                 <thead class="text-text-muted border-b border-brand-border bg-brand-bg">
                                     <tr>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Nº Vale</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Data</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px]">Cliente</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] text-center whitespace-nowrap">Qtd</th>
-                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] text-center whitespace-nowrap">Baixar</th>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Número do Vale</th>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px]">Nome do Cliente</th>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Cidade / UF</th>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Data de Agenda</th>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] text-center whitespace-nowrap">Quantidade</th>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] text-center whitespace-nowrap">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tbody-vale-pallets" class="divide-y divide-brand-border"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Histórico de Coletas (ao baixar vales de clientes) -->
+                    <div class="bg-brand-panel rounded-xl p-5 border border-brand-border flex flex-col min-w-0">
+                        <h3 class="text-sm font-bold text-text-main mb-3">Histórico de Coletas</h3>
+                        <div class="overflow-x-auto w-full border border-brand-border rounded-xl">
+                            <table class="w-full text-left text-xs">
+                                <thead class="text-text-muted border-b border-brand-border bg-brand-bg">
+                                    <tr>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Nº Vale</th>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px]">Cliente</th>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px]">Transportador</th>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Data da Coleta</th>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] text-center whitespace-nowrap">Quantidade</th>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] text-right whitespace-nowrap">Valor (R$)</th>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px] text-center whitespace-nowrap">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-historico-coletas" class="divide-y divide-brand-border"></tbody>
                             </table>
                         </div>
                     </div>
@@ -1093,9 +1042,14 @@
                 <!-- Filtros de Carregamentos -->
                 <div class="bg-brand-panel border border-brand-border rounded-xl p-3 mb-5 flex flex-wrap items-center justify-between gap-2">
                     <div class="flex flex-wrap items-center gap-2">
-                        <select id="filtro-carreg-data" onchange="renderCarregamentos()" class="minimal-input py-1.5 px-2.5 w-auto text-xs font-semibold cursor-pointer status-select pr-6">
-                            <option value="">Datas</option>
-                        </select>
+                        <input type="hidden" id="filtro-carreg-data" value="">
+                        <button type="button" id="btn-filtro-carreg-data" onclick="abrirCalendarioFiltro('carregamentos', this)" class="minimal-input py-1.5 px-2.5 w-auto text-xs font-semibold cursor-pointer hover:border-sky-400 flex items-center gap-2 min-w-[140px] justify-between">
+                            <span class="flex items-center gap-1.5 truncate">
+                                <svg class="w-3.5 h-3.5 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span id="label-filtro-carreg-data" class="truncate">Todas as Datas</span>
+                            </span>
+                            <svg class="w-3.5 h-3.5 text-text-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
 
                         <select id="filtro-carreg-transp" onchange="renderCarregamentos()" class="minimal-input py-1.5 px-2.5 w-auto text-xs font-medium cursor-pointer status-select pr-6">
                             <option value="">Transportadoras</option>
@@ -1166,9 +1120,9 @@
             <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"></path></svg>
             Carreg.
         </button>
-        <button onclick="mudarAba('pallets')" id="mob-tab-pallets" class="flex flex-col items-center justify-center py-1 px-2 rounded-lg text-[10px] font-medium text-text-muted">
-            <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"></path></svg>
-            Pallets
+        <button onclick="mudarAba('valepallets')" id="mob-tab-valepallets" class="flex flex-col items-center justify-center py-1 px-2 rounded-lg text-[10px] font-medium text-text-muted">
+            <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"></path></svg>
+            Vales
         </button>
         <button onclick="mudarAba('produtos')" id="mob-tab-produtos" class="admin-only flex flex-col items-center justify-center py-1 px-2 rounded-lg text-[10px] font-medium text-text-muted">
             <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4"></path></svg>
@@ -1191,7 +1145,7 @@
                 <button onclick="mudarAba('estatisticas'); toggleMobileMoreMenu(false)" class="p-3 rounded-xl bg-brand-bg border border-brand-border text-xs font-semibold text-text-main hover:border-sky-400 text-center">Estatísticas</button>
                 <button onclick="mudarAba('mapa'); toggleMobileMoreMenu(false)" class="p-3 rounded-xl bg-brand-bg border border-brand-border text-xs font-semibold text-text-main hover:border-sky-400 text-center">Mapa</button>
                 <button onclick="mudarAba('transportadoras'); toggleMobileMoreMenu(false)" class="p-3 rounded-xl bg-brand-bg border border-brand-border text-xs font-semibold text-text-main hover:border-sky-400 text-center">Transp.</button>
-                <button onclick="mudarAba('clientes'); toggleMobileMoreMenu(false)" class="admin-only p-3 rounded-xl bg-brand-bg border border-brand-border text-xs font-semibold text-text-main hover:border-sky-400 text-center">Clientes</button>
+                <button onclick="mudarAba('clientes'); toggleMobileMoreMenu(false)" style="display: none !important;" class="hidden p-3 rounded-xl bg-brand-bg border border-brand-border text-xs font-semibold text-text-main hover:border-sky-400 text-center">Clientes</button>
                 <button onclick="mudarAba('valepallets'); toggleMobileMoreMenu(false)" class="p-3 rounded-xl bg-brand-bg border border-brand-border text-xs font-semibold text-text-main hover:border-sky-400 text-center">Vale Pallets</button>
                 <button onclick="mudarAba('produtos'); toggleMobileMoreMenu(false)" class="admin-only p-3 rounded-xl bg-brand-bg border border-brand-border text-xs font-semibold text-text-main hover:border-sky-400 text-center">Produtos</button>
             </div>
@@ -1732,17 +1686,17 @@
 
 
     <!-- MODAL DE LOGIN, CADASTRO, APROVAÇÃO ADMIN E FIREBASE -->
-    <div id="modal-auth-firebase" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div id="modal-auth-firebase" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md hidden z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
         <div class="bg-brand-panel rounded-2xl shadow-2xl w-full max-w-lg border border-brand-border my-4 overflow-hidden">
             <div class="px-5 py-4 border-b border-brand-border flex justify-between items-center bg-brand-bg/60">
                 <div class="flex items-center gap-2.5">
                     <span id="modal-auth-dot" class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
                     <div>
                         <h3 class="text-sm font-bold text-text-main">Acesso ao Sistema (Firebase)</h3>
-                        <p class="text-[11px] text-text-muted" id="modal-auth-sub">Somente Visualização ativo — faça login para alterar dados</p>
+                        <p class="text-[11px] text-text-muted" id="modal-auth-sub">Faça login para acessar o sistema</p>
                     </div>
                 </div>
-                <button onclick="fecharModal('modal-auth-firebase')" class="text-text-muted hover:text-brand-red transition-colors bg-brand-bg rounded-full p-1">
+                <button id="btn-close-auth-modal" onclick="fecharModal('modal-auth-firebase')" class="hidden text-text-muted hover:text-brand-red transition-colors bg-brand-bg rounded-full p-1">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
@@ -1765,7 +1719,7 @@
                             <p class="text-xs font-bold text-emerald-400" id="auth-logged-nome">Conectado</p>
                             <p class="text-[11px] text-text-muted mt-0.5" id="auth-logged-role">Permissão de edição ativa</p>
                         </div>
-                        <button onclick="fazerLogoutFirebase()" class="px-3 py-1.5 rounded-lg bg-brand-bg border border-brand-border hover:border-brand-red text-brand-red text-xs font-semibold transition-colors">Sair (Ir para Visualização)</button>
+                        <button onclick="fazerLogoutFirebase()" class="px-3 py-1.5 rounded-lg bg-brand-bg border border-brand-border hover:border-brand-red text-brand-red text-xs font-semibold transition-colors">Sair</button>
                     </div>
 
                     <form id="form-auth-login" onsubmit="fazerLoginFirebase(event)" class="space-y-3">
@@ -1780,11 +1734,7 @@
                         <button type="submit" class="w-full py-2.5 rounded-xl bg-brand-blue hover:bg-brand-lightBlue text-white text-xs font-bold transition-colors shadow-sm">Entrar para Alterar Dados</button>
                     </form>
 
-                    <div class="pt-2 border-t border-brand-border text-center">
-                        <button type="button" onclick="entrarModoVisualizacao()" class="w-full py-2 rounded-xl bg-brand-bg hover:border-sky-400 border border-brand-border text-text-muted hover:text-text-main text-xs font-semibold transition-colors">
-                            Continuar em Somente Visualização (Sem Login)
-                        </button>
-                    </div>
+
                 </div>
 
                 <!-- ABA SOLICITAR CADASTRO -->
@@ -1811,9 +1761,8 @@
                         <div>
                             <label class="block text-xs font-semibold text-text-muted mb-1">Categoria de Acesso</label>
                             <select id="reg-role" class="minimal-input cursor-pointer">
-                                <option value="assistente">Assistente (Pode alterar dados operacionais)</option>
                                 <option value="visitante">Visitante (Somente visualização)</option>
-                                <option value="administrador">Administrador (Acesso total + Clientes e Produtos)</option>
+                                <option value="administrador">Administrador (Acesso total e edições)</option>
                             </select>
                         </div>
                         <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors shadow-sm">Enviar Solicitação de Cadastro</button>
@@ -1918,12 +1867,13 @@
             carregamentos: '++id, dataCarregamento, unidade',
             produtos: '++id, sku, nome'
         });
-        db.version(10).stores({
+        db.version(11).stores({
             romaneios: '++id, romaneio, nf, dataSaida, transportador, motorista, placa',
             nfes: '++id, nNF',
             nfepdfs: '++id, nNF',
             motoristas: '++id, nome, transportadora',
-            valePallets: '++id, numeroVale, cliente, qtd, data',
+            valePallets: '++id, numeroVale, cliente, qtd, data, dataAgenda',
+            historicoColetas: '++id, numeroVale, cliente, transportador, dataColeta, qtd',
             valeTransportadoras: '++id, numeroControle, transportadora, obs, qtd, data',
             transportadoras: '++id, nome, apelido',
             carregamentos: '++id, dataCarregamento, unidade',
@@ -1935,6 +1885,7 @@
         let bancoNFe = [];
         let bancoMotoristas = [];
         let bancoValePallets = [];
+        let bancoHistoricoColetas = [];
         let bancoValeTransportadoras = [];
         let bancoTransportadoras = [];
         let bancoCarregamentos = [];
@@ -1970,20 +1921,18 @@
 
         let fbApp = null;
         let fbDb = null;
-        let usuarioAtual = null; // null = Somente Visualização
+        let usuarioAtual = null;
         let unsubscribeAdminUsers = null;
 
         function obterCategoriaUsuario(user) {
             if (!user) return 'visitante';
             const r = String(user.role || '').toLowerCase().trim();
             if (r === 'admin' || r === 'administrador') return 'administrador';
-            if (r === 'editor' || r === 'assistente') return 'assistente';
             return 'visitante';
         }
 
         function obterLabelCategoria(cat) {
             if (cat === 'administrador') return 'Administrador';
-            if (cat === 'assistente') return 'Assistente';
             return 'Visitante';
         }
 
@@ -1992,9 +1941,7 @@
         }
 
         function podeEditar() {
-            if (!usuarioAtual || usuarioAtual.status !== 'approved') return false;
-            const cat = obterCategoriaUsuario(usuarioAtual);
-            return cat === 'administrador' || cat === 'assistente';
+            return isAdmin();
         }
 
         function exigirPermissaoEdicao() {
@@ -2002,32 +1949,27 @@
             const ehVisitante = Boolean(usuarioAtual && usuarioAtual.status === 'approved' && obterCategoriaUsuario(usuarioAtual) === 'visitante');
             Swal.fire({
                 icon: 'info',
-                title: ehVisitante ? 'Perfil Visitante (Somente Leitura)' : 'Somente Visualização',
+                title: ehVisitante ? 'Perfil Visitante (Somente Leitura)' : 'Login Necessário',
                 text: ehVisitante
-                    ? 'Sua categoria é Visitante. Apenas Administrador ou Assistente podem alterar dados.'
-                    : 'Você está no modo Somente Visualização. Faça login com uma conta Administrador ou Assistente para alterar dados.',
+                    ? 'Sua conta é Visitante. Apenas Administrador pode alterar dados.'
+                    : 'Faça login com uma conta Administrador para alterar dados.',
                 confirmButtonColor: '#3b82f6',
-                confirmButtonText: 'Entrar / Trocar Conta',
-                showCancelButton: true,
-                cancelButtonText: 'Continuar Visualizando'
-            }).then((r) => {
-                if (r.isConfirmed) abrirModalAuthFirebase();
+                confirmButtonText: ehVisitante ? 'Ok' : 'Entrar'
+            }).then(() => {
+                if (!ehVisitante) abrirModalAuthFirebase();
             });
             return false;
         }
 
         function aplicarEstadoPermissaoUI() {
+            const logado = Boolean(usuarioAtual && usuarioAtual.status === 'approved');
             const editor = podeEditar();
             const adm = isAdmin();
             document.body.classList.toggle('read-only-mode', !editor);
             document.body.classList.toggle('is-admin-mode', adm);
 
-            const inpSaldo = document.getElementById('input-saldo-base');
-            if (inpSaldo) {
-                inpSaldo.disabled = !editor;
-                inpSaldo.classList.toggle('opacity-60', !editor);
-                inpSaldo.classList.toggle('cursor-not-allowed', !editor);
-            }
+            const btnCloseAuth = document.getElementById('btn-close-auth-modal');
+            if (btnCloseAuth) btnCloseAuth.classList.toggle('hidden', !logado);
 
             const dot = document.getElementById('dot-auth-status');
             const lbl = document.getElementById('label-auth-status');
@@ -2037,15 +1979,13 @@
             const loggedBox = document.getElementById('auth-logged-box');
             const formLogin = document.getElementById('form-auth-login');
 
-            if (usuarioAtual && usuarioAtual.status === 'approved') {
+            if (logado) {
                 const cat = obterCategoriaUsuario(usuarioAtual);
                 const labelCat = obterLabelCategoria(cat);
-                const corDot = adm ? 'bg-emerald-400' : (cat === 'assistente' ? 'bg-sky-400' : 'bg-amber-400');
+                const corDot = adm ? 'bg-emerald-400' : 'bg-sky-400';
                 const descRole = adm
-                    ? 'Administrador (acesso total, aprovações, Clientes e Produtos)'
-                    : (cat === 'assistente'
-                        ? 'Assistente (pode alterar dados operacionais)'
-                        : 'Visitante (somente visualização)');
+                    ? 'Administrador (acesso total, aprovações, edições, Clientes e Produtos)'
+                    : 'Visitante (somente visualização)';
 
                 if (dot) dot.className = `w-2 h-2 rounded-full ${corDot} shrink-0`;
                 if (lbl) lbl.textContent = `${adm ? 'Admin' : labelCat}: ${usuarioAtual.username}`;
@@ -2060,9 +2000,9 @@
                 if (formLogin) formLogin.classList.add('hidden');
             } else {
                 if (dot) dot.className = 'w-2 h-2 rounded-full bg-amber-400 shrink-0';
-                if (lbl) lbl.textContent = 'Visualização • Entrar';
+                if (lbl) lbl.textContent = 'Entrar';
                 if (mDot) mDot.className = 'w-2.5 h-2.5 rounded-full bg-amber-400';
-                if (mSub) mSub.textContent = 'Somente Visualização ativo — faça login para acessar sua categoria';
+                if (mSub) mSub.textContent = 'Faça login para acessar o sistema';
                 if (tabAdmin) tabAdmin.classList.add('hidden');
                 if (loggedBox) loggedBox.classList.add('hidden');
                 if (formLogin) formLogin.classList.remove('hidden');
@@ -2152,13 +2092,7 @@
             if (aba === 'admin') carregarListaUsuariosAdmin();
         }
 
-        function entrarModoVisualizacao() {
-            usuarioAtual = null;
-            try { localStorage.removeItem('savencia_auth_session'); } catch (e) {}
-            aplicarEstadoPermissaoUI();
-            fecharModal('modal-auth-firebase');
-            Swal.fire({ toast: true, position: 'top-end', icon: 'info', title: 'Modo Somente Visualização ativo.', showConfirmButton: false, timer: 2000 });
-        }
+
 
         async function fazerLoginFirebase(e) {
             e.preventDefault();
@@ -2233,7 +2167,7 @@
                 const isFirstAdmin = !temAdmin;
                 const hash = await hashSenhaSHA256(username, senha);
 
-                const roleSolicitada = document.getElementById('reg-role')?.value || 'assistente';
+                const roleSolicitada = document.getElementById('reg-role')?.value || 'visitante';
                 const novoUser = {
                     username,
                     passwordHash: hash,
@@ -2268,7 +2202,8 @@
             const b = document.getElementById('badge-pendentes-admin');
             if (b) b.classList.add('hidden');
             aplicarEstadoPermissaoUI();
-            Swal.fire({ toast: true, position: 'top-end', icon: 'info', title: 'Desconectado. Modo Somente Visualização ativo.', showConfirmButton: false, timer: 2000 });
+            abrirModalAuthFirebase();
+            Swal.fire({ toast: true, position: 'top-end', icon: 'info', title: 'Desconectado. Faça login para continuar.', showConfirmButton: false, timer: 2000 });
         }
 
         function iniciarListenerPendentesAdmin() {
@@ -2320,7 +2255,7 @@
                 const labelCat = obterLabelCategoria(cat);
                 const catColor = cat === 'administrador'
                     ? 'bg-emerald-500/15 text-emerald-400'
-                    : (cat === 'assistente' ? 'bg-sky-500/15 text-sky-400' : 'bg-slate-500/20 text-slate-300');
+                    : 'bg-sky-500/15 text-sky-400';
                 const badge = u.status === 'pending'
                     ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/15 text-amber-400">Pendente</span>'
                     : (u.status === 'approved'
@@ -2339,7 +2274,6 @@
                         ${!isSelf ? `
                             <select id="admin-role-${u.username}" onchange="alterarCategoriaUsuarioFirebase('${u.username}', this.value)" class="bg-brand-panel border border-brand-border rounded-lg px-2 py-1 text-[10px] font-semibold text-text-main cursor-pointer">
                                 <option value="administrador" ${cat === 'administrador' ? 'selected' : ''}>Administrador</option>
-                                <option value="assistente" ${cat === 'assistente' ? 'selected' : ''}>Assistente</option>
                                 <option value="visitante" ${cat === 'visitante' ? 'selected' : ''}>Visitante</option>
                             </select>
                         ` : ''}
@@ -2448,6 +2382,7 @@
                     transportadoras: snapshot.transportadoras || [],
                     produtos: snapshot.produtos || [],
                     valePallets: snapshot.valePallets || [],
+                    historicoColetas: snapshot.historicoColetas || [],
                     valeTransportadoras: snapshot.valeTransportadoras || [],
                     carregamentos: snapshot.carregamentos || [],
                     syncId
@@ -2492,15 +2427,15 @@
                 if (Array.isArray(d.transportadoras)) bancoTransportadoras = d.transportadoras;
                 if (Array.isArray(d.produtos)) bancoProdutos = d.produtos;
                 if (Array.isArray(d.valePallets)) bancoValePallets = d.valePallets;
+                if (Array.isArray(d.historicoColetas)) bancoHistoricoColetas = d.historicoColetas;
                 if (Array.isArray(d.valeTransportadoras)) bancoValeTransportadoras = d.valeTransportadoras;
                 if (Array.isArray(d.carregamentos)) bancoCarregamentos = d.carregamentos;
                 if (d.saldoBasePallets !== undefined) {
                     try { localStorage.setItem('savencia_saldo_base_pallets', String(d.saldoBasePallets)); } catch (e) {}
-                    const inpSaldo = document.getElementById('input-saldo-base');
-                    if (inpSaldo) inpSaldo.value = d.saldoBasePallets;
+                    
                 }
 
-                await db.transaction('rw', db.romaneios, db.nfes, db.motoristas, db.valePallets, db.valeTransportadoras, db.transportadoras, db.carregamentos, db.produtos, async () => {
+                await db.transaction('rw', db.romaneios, db.nfes, db.motoristas, db.valePallets, db.historicoColetas, db.valeTransportadoras, db.transportadoras, db.carregamentos, db.produtos, async () => {
                     await db.romaneios.clear();
                     if (bancoDados.length > 0) await db.romaneios.bulkAdd(bancoDados);
                     await db.nfes.clear();
@@ -2509,6 +2444,8 @@
                     if (bancoMotoristas.length > 0) await db.motoristas.bulkAdd(bancoMotoristas);
                     await db.valePallets.clear();
                     if (bancoValePallets.length > 0) await db.valePallets.bulkAdd(bancoValePallets);
+                    await db.historicoColetas.clear();
+                    if (bancoHistoricoColetas.length > 0) await db.historicoColetas.bulkAdd(bancoHistoricoColetas);
                     await db.valeTransportadoras.clear();
                     if (bancoValeTransportadoras.length > 0) await db.valeTransportadoras.bulkAdd(bancoValeTransportadoras);
                     await db.transportadoras.clear();
@@ -2556,12 +2493,12 @@
                     if (Array.isArray(d.transportadoras)) bancoTransportadoras = d.transportadoras;
                     if (Array.isArray(d.produtos)) bancoProdutos = d.produtos;
                     if (Array.isArray(d.valePallets)) bancoValePallets = d.valePallets;
+                    if (Array.isArray(d.historicoColetas)) bancoHistoricoColetas = d.historicoColetas;
                     if (Array.isArray(d.valeTransportadoras)) bancoValeTransportadoras = d.valeTransportadoras;
                     if (Array.isArray(d.carregamentos)) bancoCarregamentos = d.carregamentos;
                     if (d.saldoBasePallets !== undefined) {
                         try { localStorage.setItem('savencia_saldo_base_pallets', String(d.saldoBasePallets)); } catch (e) {}
-                        const inpSaldo = document.getElementById('input-saldo-base');
-                        if (inpSaldo) inpSaldo.value = d.saldoBasePallets;
+                        
                     }
                     vincularNomesTransportadorasGlobal();
                     montarFiltrosHorizontais();
@@ -2596,12 +2533,12 @@
                     if (Array.isArray(d.transportadoras)) bancoTransportadoras = d.transportadoras;
                     if (Array.isArray(d.produtos)) bancoProdutos = d.produtos;
                     if (Array.isArray(d.valePallets)) bancoValePallets = d.valePallets;
+                    if (Array.isArray(d.historicoColetas)) bancoHistoricoColetas = d.historicoColetas;
                     if (Array.isArray(d.valeTransportadoras)) bancoValeTransportadoras = d.valeTransportadoras;
                     if (Array.isArray(d.carregamentos)) bancoCarregamentos = d.carregamentos;
                     if (d.saldoBasePallets !== undefined) {
                         try { localStorage.setItem('savencia_saldo_base_pallets', String(d.saldoBasePallets)); } catch (e) {}
-                        const inpSaldo = document.getElementById('input-saldo-base');
-                        if (inpSaldo) inpSaldo.value = d.saldoBasePallets;
+                        
                     }
 
                     vincularNomesTransportadorasGlobal();
@@ -2618,23 +2555,11 @@
             renderThemeIcon();
             await carregarBancos();
             inicializarFirebase();
-            try {
-                const sess = localStorage.getItem('savencia_auth_session');
-                if (sess) {
-                    const parsed = JSON.parse(sess);
-                    if (fbDb && parsed?.username) {
-                        const doc = await fbDb.collection('usuarios').doc(parsed.username).get();
-                        if (doc.exists && doc.data().status === 'approved') {
-                            usuarioAtual = { username: doc.data().username, role: doc.data().role, status: 'approved' };
-                            if (isAdmin()) iniciarListenerPendentesAdmin();
-                        }
-                    }
-                }
-            } catch (e) {}
+            usuarioAtual = null;
+            try { localStorage.removeItem('savencia_auth_session'); } catch (e) {}
             aplicarEstadoPermissaoUI();
             mudarAba('romaneios');
-            const saldoBaseSalvo = localStorage.getItem('savencia_saldo_base_pallets');
-            if(saldoBaseSalvo) document.getElementById('input-saldo-base').value = saldoBaseSalvo;
+            abrirModalAuthFirebase();
         });
 
         async function carregarBancos() {
@@ -2642,6 +2567,7 @@
             bancoNFe = await db.nfes.toArray();
             bancoMotoristas = await db.motoristas.toArray();
             bancoValePallets = await db.valePallets.toArray() || [];
+            bancoHistoricoColetas = await db.historicoColetas.toArray() || [];
             bancoValeTransportadoras = await db.valeTransportadoras.toArray() || [];
             bancoTransportadoras = await db.transportadoras.toArray() || [];
             bancoCarregamentos = await db.carregamentos.toArray() || [];
@@ -3090,7 +3016,7 @@
 
         async function salvarTodosBancos() {
             if (!exigirPermissaoEdicao()) return;
-            await db.transaction('rw', db.romaneios, db.nfes, db.motoristas, db.valePallets, db.valeTransportadoras, db.transportadoras, db.carregamentos, db.produtos, async () => {
+            await db.transaction('rw', db.romaneios, db.nfes, db.motoristas, db.valePallets, db.historicoColetas, db.valeTransportadoras, db.transportadoras, db.carregamentos, db.produtos, async () => {
                 await db.romaneios.clear();
                 if(bancoDados.length > 0) await db.romaneios.bulkAdd(bancoDados);
                 
@@ -3102,6 +3028,9 @@
 
                 await db.valePallets.clear();
                 if(bancoValePallets.length > 0) await db.valePallets.bulkAdd(bancoValePallets);
+
+                await db.historicoColetas.clear();
+                if(bancoHistoricoColetas.length > 0) await db.historicoColetas.bulkAdd(bancoHistoricoColetas);
 
                 await db.valeTransportadoras.clear();
                 if(bancoValeTransportadoras.length > 0) await db.valeTransportadoras.bulkAdd(bancoValeTransportadoras);
@@ -3363,7 +3292,8 @@
             if (aba === 'motoristas') aba = 'transportadoras';
             if ((aba === 'clientes' || aba === 'produtos') && !isAdmin()) aba = 'romaneios';
             currentTab = aba;
-            const abas = ['romaneios', 'estatisticas', 'carregamentos', 'mapa', 'transportadoras', 'clientes', 'produtos', 'pallets', 'valepallets'];
+            if (aba === 'pallets') aba = 'valepallets';
+            const abas = ['romaneios', 'estatisticas', 'carregamentos', 'mapa', 'transportadoras', 'clientes', 'produtos', 'valepallets'];
             abas.forEach(id => {
                 const btn = document.getElementById('tab-' + id);
                 const view = document.getElementById('view-' + id);
@@ -3385,7 +3315,7 @@
             const fc = document.getElementById('filtro-container');
             if (fc) fc.style.display = (aba === 'romaneios' || aba === 'estatisticas' || aba === 'mapa') ? '' : 'none';
 
-            ['romaneios', 'carregamentos', 'pallets', 'produtos'].forEach(mId => {
+            ['romaneios', 'carregamentos', 'valepallets', 'produtos'].forEach(mId => {
                 const mBtn = document.getElementById('mob-tab-' + mId);
                 if (!mBtn) return;
                 if (mId === aba) {
@@ -3410,7 +3340,6 @@
             else if (aba === 'transportadoras') { renderTransportadoras(); }
             else if (aba === 'clientes') { renderClientes(); }
             else if (aba === 'produtos') { renderProdutos(); }
-            else if (aba === 'pallets') renderPallets();
             else if (aba === 'valepallets') renderValePallets();
         }
 
@@ -3437,6 +3366,8 @@
             const sCli = document.getElementById('select-filtro-cliente');
             
             if(sData) sData.value = "";
+            const lblData = document.getElementById('label-filtro-data');
+            if(lblData) lblData.textContent = "Todas as Datas";
             if(sTransp) sTransp.value = "";
             if(sMot) sMot.value = "";
             if(sCli) sCli.value = "";
@@ -3483,12 +3414,9 @@
 
             const clientes = [...new Set(bancoDados.map(i => i.clienteCidade).filter(Boolean))].sort((a,b) => String(a).localeCompare(String(b), undefined, {sensitivity: 'base'}));
 
-            let dHtml = '<option value="">Todas as Datas</option>';
-            datas.forEach(d => {
-                const ehHoje = d === obterDataHojeBR();
-                dHtml += `<option value="${d}" ${filtroDataAtiva===d?'selected':''}>${d}${ehHoje ? ' (Hoje)' : ''}</option>`;
-            });
-            if(selData) selData.innerHTML = dHtml;
+            if (selData) selData.value = filtroDataAtiva || '';
+            const lblData = document.getElementById('label-filtro-data');
+            if (lblData) lblData.textContent = filtroDataAtiva ? `${filtroDataAtiva}${filtroDataAtiva === obterDataHojeBR() ? ' (Hoje)' : ''}` : 'Todas as Datas';
 
             let tHtml = '<option value="">Transportadoras</option>';
             transportadoras.forEach(t => {
@@ -3510,7 +3438,9 @@
             if(selMot) selMot.innerHTML = mHtml;
 
             let cHtml = '<option value="">Clientes</option>';
-            clientes.forEach(c => cHtml += `<option value="${c}" ${filtroCliAtiva===c?'selected':''}>${c}</option>`);
+            clientes.forEach(c => {
+                cHtml += `<option value="${c}" ${filtroCliAtiva===c?'selected':''}>${c}</option>`;
+            });
             if(selCli) selCli.innerHTML = cHtml;
         }
 
@@ -3570,7 +3500,11 @@
 
         function irParaRomaneio(rom) {
             mudarAba('romaneios');
-            document.getElementById('input-busca').value = rom;
+            usuarioLimpouDataManualmente = true;
+            limparFiltros(false, true);
+            const inpBusca = document.getElementById('input-busca');
+            if (inpBusca) inpBusca.value = rom || '';
+            montarFiltrosHorizontais();
             atualizarPainelVisual();
             setTimeout(() => {
                 const elementId = 'ac-' + rom;
@@ -3606,8 +3540,14 @@
             return bancoTransportadoras.find(t => {
                 const nOficial = normalizarTextoTransp(t.nome);
                 const nApelido = normalizarTextoTransp(t.apelido);
+                const tags = Array.isArray(t.tags) ? t.tags : [];
+                const matchTag = tags.some(tag => {
+                    const nTag = normalizarTextoTransp(tag);
+                    return nTag && (norm === nTag || (nTag.length >= 3 && norm.includes(nTag)) || (norm.length >= 3 && nTag.includes(norm)));
+                });
                 return norm === nOficial ||
                        norm === nApelido ||
+                       matchTag ||
                        (nOficial.length >= 4 && norm.includes(nOficial)) ||
                        (nOficial.length >= 4 && nOficial.includes(norm)) ||
                        (nApelido.length >= 3 && norm.includes(nApelido));
@@ -3638,6 +3578,9 @@
             });
             bancoValeTransportadoras.forEach(vt => {
                 if (vt.transportadora) vt.transportadora = obterNomeExibicaoTransportadora(vt.transportadora);
+            });
+            bancoHistoricoColetas.forEach(hc => {
+                if (hc.transportador) hc.transportador = obterNomeExibicaoTransportadora(hc.transportador);
             });
             bancoNFe.forEach(nf => {
                 if (nf.transp) nf.transp = obterNomeExibicaoTransportadora(nf.transp);
@@ -3705,9 +3648,11 @@
             e.preventDefault();
             const nomeStr = document.getElementById('transp-nome').value.trim().toUpperCase();
             const apelidoStr = document.getElementById('transp-apelido').value.trim().toUpperCase();
+            const tagsRaw = document.getElementById('transp-tags')?.value || '';
+            const tagsArr = [...new Set(tagsRaw.split(',').map(x => x.trim().toUpperCase()).filter(Boolean))];
             if (!nomeStr || !apelidoStr) return;
 
-            const novaTransp = { nome: nomeStr, apelido: apelidoStr };
+            const novaTransp = { nome: nomeStr, apelido: apelidoStr, tags: tagsArr };
 
             if (editandoTransportadoraId) {
                 novaTransp.id = editandoTransportadoraId;
@@ -3749,6 +3694,9 @@
             if (!t) return;
             document.getElementById('transp-nome').value = t.nome;
             document.getElementById('transp-apelido').value = t.apelido;
+            if (document.getElementById('transp-tags')) {
+                document.getElementById('transp-tags').value = Array.isArray(t.tags) ? t.tags.join(', ') : '';
+            }
             editandoTransportadoraId = id;
             document.getElementById('titulo-form-transp').innerText = "Editar Transportadora";
             document.getElementById('btn-salvar-transp').innerText = "Atualizar";
@@ -3806,7 +3754,10 @@
                 if(index !== -1) bancoMotoristas[index] = novoMot;
                 Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Motorista atualizado!', showConfirmButton: false, timer: 1500 });
             } else {
-                const existente = bancoMotoristas.find(m => m.nome.toLowerCase() === nomeStr.toLowerCase());
+                const existente = bancoMotoristas.find(m =>
+                    m.nome.toLowerCase() === nomeStr.toLowerCase() &&
+                    obterNomeExibicaoTransportadora(m.transportadora || '').toLowerCase() === transpStr.toLowerCase()
+                );
                 if(existente) {
                     novoMot.id = existente.id;
                     const index = bancoMotoristas.findIndex(m => m.id === existente.id);
@@ -3882,7 +3833,11 @@
             const registrar = (fonte) => {
                 const cnpj = fonte.cnpj || '';
                 const nomeBruto = fonte.nome || 'Cliente Não Informado';
-                const chave = cnpj ? `CNPJ_${cnpj.replace(/\D/g, '')}` : `NOME_${normalizarTextoTransp(nomeBruto)}`;
+                const codLoja = `${fonte.codigoCliente || ''}_${fonte.loja || ''}`;
+                const cidNorm = normalizarTextoTransp(fonte.cidadeUF || '');
+                const chave = cnpj
+                    ? `CNPJ_${cnpj.replace(/\D/g, '')}`
+                    : `NOME_${normalizarTextoTransp(nomeBruto)}_${cidNorm}_${codLoja}`;
 
                 if (!mapa.has(chave)) {
                     mapa.set(chave, {
@@ -4026,7 +3981,9 @@
                 return;
             }
 
-            container.innerHTML = filtrados.map(c => `
+            container.innerHTML = filtrados.map(c => {
+                const palletsDevendo = calcularPalletsDevendoCliente(c);
+                return `
                 <div onclick="abrirDetalhesCliente('${c.chave.replace(/'/g, "\\'")}')" class="px-5 py-3.5 flex items-center justify-between gap-4 cursor-pointer item-hover transition-colors">
                     <div class="flex items-center gap-3 min-w-0 flex-1">
                         <span class="text-xs font-mono font-bold text-sky-400 shrink-0">${c.codigoCliente || '---'} / ${c.loja || '0001'}</span>
@@ -4034,21 +3991,62 @@
                         ${c.cidadeUF ? `<span class="text-xs text-text-muted shrink-0">${c.cidadeUF}</span>` : ''}
                     </div>
                     <div class="flex items-center gap-3 shrink-0">
-                        <span class="text-xs font-mono text-text-muted">${c.cnpj || '---'}</span>
+                        ${palletsDevendo > 0
+                            ? `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-red-500/15 text-red-400 border border-red-500/30">Devendo: ${palletsDevendo} pallet(s)</span>`
+                            : `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/10 text-emerald-400">0 pallets</span>`}
+                        <span class="text-xs font-mono text-text-muted hidden sm:inline">${c.cnpj || '---'}</span>
                         <svg class="w-4 h-4 text-text-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
                     </div>
                 </div>
-            `).join('');
+            `;
+            }).join('');
+        }
+
+        function calcularPalletsDevendoCliente(cli) {
+            if (!cli || !Array.isArray(bancoValePallets) || bancoValePallets.length === 0) return 0;
+            const cliCnpjDigits = String(cli.cnpj || '').replace(/\D/g, '');
+            const nNome = normalizarTextoTransp(cli.nome);
+            const nFant = normalizarTextoTransp(cli.fantasia);
+            return bancoValePallets.reduce((acc, v) => {
+                const vCnpjDigits = String(v.cnpj || '').replace(/\D/g, '');
+                if (vCnpjDigits && cliCnpjDigits) {
+                    return vCnpjDigits === cliCnpjDigits ? acc + (parseInt(v.qtd, 10) || 0) : acc;
+                }
+                if (vCnpjDigits && !cliCnpjDigits) return acc;
+                const nValeCli = normalizarTextoTransp(v.cliente);
+                if (!nValeCli) return acc;
+                const matchNome = nNome && (nValeCli === nNome || nValeCli.includes(nNome) || nNome.includes(nValeCli));
+                const matchFant = nFant && nFant.length >= 3 && (nValeCli === nFant || nValeCli.includes(nFant) || nFant.includes(nValeCli));
+                return (matchNome || matchFant) ? acc + (parseInt(v.qtd, 10) || 0) : acc;
+            }, 0);
+        }
+
+        function abrirDetalhesClientePorNota(nf, romaneio) {
+            cacheClientesAgrupados = consolidarClientes();
+            const nota = bancoDados.find(r => normalizarNumeroNF(r.nf) === normalizarNumeroNF(nf) && String(r.romaneio) === String(romaneio));
+            if (!nota) return;
+            const cnpjDigits = String(nota.cnpjCliente || '').replace(/\D/g, '');
+            let cli = null;
+            if (cnpjDigits) {
+                cli = cacheClientesAgrupados.find(c => String(c.cnpj || '').replace(/\D/g, '') === cnpjDigits);
+            }
+            if (!cli) {
+                const nfNorm = normalizarNumeroNF(nf);
+                cli = cacheClientesAgrupados.find(c => c.notas.some(x => normalizarNumeroNF(x.nf) === nfNorm));
+            }
+            if (cli) abrirDetalhesCliente(cli.chave);
         }
 
         function abrirDetalhesCliente(chave) {
             const cli = cacheClientesAgrupados.find(c => c.chave === chave);
             if (!cli) return;
+            const palletsDevendo = calcularPalletsDevendoCliente(cli);
 
             document.getElementById('modal-cli-titulo').innerText = cli.nome;
             document.getElementById('modal-cli-subtitulo').innerText = [cli.fantasia, cli.cnpj ? `CNPJ: ${cli.cnpj}` : '', cli.codigoCliente ? `Cód: ${cli.codigoCliente} / Loja ${cli.loja || '0001'}` : ''].filter(Boolean).join(' • ') || 'Ficha do Cliente';
 
             const campos = [
+                { label: 'Pallets Devendo (Vales)', val: `${palletsDevendo} pallet(s)` },
                 { label: 'CNPJ / CPF', val: cli.cnpj || 'Não informado' },
                 { label: 'Inscrição Estadual (IE)', val: cli.ie || 'Não informada' },
                 { label: 'Vendedor / Representante', val: cli.vendedor || 'Não informado no XML' },
@@ -4534,7 +4532,8 @@
                     chave,
                     id: t.id,
                     apelido: t.apelido || t.nome,
-                    nomeCompleto: t.nome || t.apelido
+                    nomeCompleto: t.nome || t.apelido,
+                    tags: Array.isArray(t.tags) ? t.tags : []
                 });
             });
 
@@ -4605,6 +4604,7 @@
                                 <div class="flex items-center gap-2 flex-wrap">
                                     <span onclick="abrirMenuRomaneiosTransportadora(event, '${p.chave.replace(/'/g, "\\'")}')" class="text-sm font-bold text-sky-400 hover:underline cursor-pointer" title="Clique para abrir todos os romaneios carregados por ${p.apelido}">${p.apelido}</span>
                                     ${p.nomeCompleto !== p.apelido ? `<span class="text-xs text-text-muted hidden sm:inline">${p.nomeCompleto}</span>` : ''}
+                                    ${(p.tags || []).map(tg => `<span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">${tg}</span>`).join('')}
                                 </div>
                                 <div class="flex items-center gap-3 text-[11px] text-text-muted mt-0.5">
                                     <span>${motoristas.length} motorista(s)</span>
@@ -4630,16 +4630,16 @@
                             ${motoristas.length === 0
                                 ? `<div class="px-5 py-4 text-xs text-text-muted">Nenhum motorista cadastrado nesta pasta.</div>`
                                 : motoristas.map(m => {
-                                    const romsMot = [...new Set(bancoDados.filter(r => r.motorista && r.motorista.toUpperCase() === m.nome.toUpperCase()).map(r => r.romaneio))];
-                                    const faltasMot = obterHistoricoFaltasMotorista(m.nome);
+                                    const romsMot = [...new Set(bancoDados.filter(r => r.motorista && r.motorista.toUpperCase() === m.nome.toUpperCase() && obterNomeExibicaoTransportadora(r.transportador) === p.chave).map(r => r.romaneio))];
+                                    const faltasMot = obterHistoricoFaltasMotorista(m.nome, p.chave);
                                     return `
                                     <div class="px-5 py-3 flex flex-wrap items-center justify-between gap-3 item-hover">
                                         <div class="flex items-center gap-3 flex-wrap">
                                             <svg class="w-4 h-4 text-text-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path></svg>
-                                            <span onclick="abrirMenuRomaneiosMotorista(event, '${m.nome.replace(/'/g, "\\'")}')" class="text-sm font-bold text-text-main hover:text-sky-400 hover:underline cursor-pointer" title="Clique para ver todos os romaneios carregados por ${m.nome}">${m.nome}</span>
+                                            <span onclick="abrirMenuRomaneiosMotorista(event, '${m.nome.replace(/'/g, "\\'")}', '${p.chave.replace(/'/g, "\\'")}')" class="text-sm font-bold text-text-main hover:text-sky-400 hover:underline cursor-pointer" title="Clique para ver os romaneios de ${m.nome} (${p.apelido})">${m.nome}</span>
                                             <span class="text-[11px] font-mono bg-brand-panel border border-brand-border px-2 py-0.5 rounded text-text-muted">${m.placa}</span>
                                             <span class="text-[11px] bg-sky-500/10 text-sky-400 px-2 py-0.5 rounded font-medium">${m.pallets} pallets</span>
-                                            <span onclick="abrirMenuRomaneiosMotorista(event, '${m.nome.replace(/'/g, "\\'")}')" class="text-[11px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-medium cursor-pointer hover:bg-emerald-500/20">${romsMot.length} romaneio(s)</span>
+                                            <span onclick="abrirMenuRomaneiosMotorista(event, '${m.nome.replace(/'/g, "\\'")}', '${p.chave.replace(/'/g, "\\'")}')" class="text-[11px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-medium cursor-pointer hover:bg-emerald-500/20">${romsMot.length} romaneio(s)</span>
                                             ${faltasMot.length > 0 ? `<span class="text-[11px] bg-red-500/15 text-red-400 px-2 py-0.5 rounded font-medium">${faltasMot.length} falta(s)</span>` : ''}
                                         </div>
                                         <div class="edit-only flex items-center gap-1.5">
@@ -4710,7 +4710,7 @@
                     <tr class="item-hover">
                         <td class="py-2.5 px-3 font-mono font-bold text-sky-400 cursor-pointer hover:underline" onclick="fecharModal('modal-detalhes-transp'); irParaRomaneio('${r.romaneio}')">#${r.romaneio}</td>
                         <td class="py-2.5 px-3 text-text-muted">${r.data}</td>
-                        <td class="py-2.5 px-3 font-semibold text-text-main ${r.motorista !== 'Sem Registro' ? 'hover:text-sky-400 hover:underline cursor-pointer' : ''}" ${r.motorista !== 'Sem Registro' ? `onclick="fecharModal('modal-detalhes-transp'); abrirMenuRomaneiosMotorista(event, '${r.motorista.replace(/'/g, "\\'")}')"` : ''}>${r.motorista}</td>
+                        <td class="py-2.5 px-3 font-semibold text-text-main ${r.motorista !== 'Sem Registro' ? 'hover:text-sky-400 hover:underline cursor-pointer' : ''}" ${r.motorista !== 'Sem Registro' ? `onclick="fecharModal('modal-detalhes-transp'); abrirMenuRomaneiosMotorista(event, '${r.motorista.replace(/'/g, "\\'")}', '${chave.replace(/'/g, "\\'")}')"` : ''}>${r.motorista}</td>
                         <td class="py-2.5 px-3 font-mono text-text-muted">${r.placa}</td>
                         <td class="py-2.5 px-3 text-right">${r.nfs}</td>
                         <td class="py-2.5 px-3 text-right">${r.caixas}</td>
@@ -4725,12 +4725,19 @@
             document.getElementById('modal-detalhes-transp').classList.remove('hidden');
         }
 
-        function abrirMenuRomaneiosMotorista(e, nomeMotorista) {
+        function abrirMenuRomaneiosMotorista(e, nomeMotorista, nomeTransp = '') {
             if (e) e.stopPropagation();
             if (!nomeMotorista) return;
             const motNorm = nomeMotorista.trim().toUpperCase();
-            const cad = bancoMotoristas.find(m => m.nome.toUpperCase() === motNorm);
-            const notas = bancoDados.filter(r => r.motorista && r.motorista.trim().toUpperCase() === motNorm);
+            const transpNorm = nomeTransp ? obterNomeExibicaoTransportadora(nomeTransp) : '';
+            const cad = transpNorm
+                ? bancoMotoristas.find(m => m.nome.toUpperCase() === motNorm && obterNomeExibicaoTransportadora(m.transportadora || '') === transpNorm)
+                : bancoMotoristas.find(m => m.nome.toUpperCase() === motNorm);
+            const notas = bancoDados.filter(r => {
+                if (!r.motorista || r.motorista.trim().toUpperCase() !== motNorm) return false;
+                if (transpNorm) return obterNomeExibicaoTransportadora(r.transportador || '') === transpNorm;
+                return true;
+            });
 
             const grupos = {};
             notas.forEach(n => {
@@ -4758,8 +4765,14 @@
             const totPeso = lista.reduce((a, b) => a + b.peso, 0);
             const totValor = lista.reduce((a, b) => a + b.valor, 0);
 
+            const transpExib = transpNorm || cad?.transportadora || lista[0]?.transportador || '';
             document.getElementById('modal-mot-titulo').innerText = motNorm;
-            document.getElementById('modal-mot-subtitulo').innerText = `${cad ? `Placa: ${cad.placa} • ` : ''}${cad?.transportadora ? `Transportadora: ${cad.transportadora}` : 'Romaneios carregados'}`;
+            const subEl = document.getElementById('modal-mot-subtitulo');
+            if (transpExib) {
+                subEl.innerHTML = `${cad ? `Placa: ${cad.placa} • ` : ''}Transportadora: <span onclick="fecharModal('modal-detalhes-motorista'); abrirMenuRomaneiosTransportadora(event, '${transpExib.replace(/'/g, "\\'")}')" class="text-sky-400 font-semibold hover:underline cursor-pointer">${transpExib}</span>`;
+            } else {
+                subEl.innerText = `${cad ? `Placa: ${cad.placa} • ` : ''}Romaneios carregados`;
+            }
 
             document.getElementById('modal-mot-kpis').innerHTML = `
                 <div class="bg-brand-bg rounded-xl p-3 border border-brand-border"><span class="text-[10px] text-text-muted uppercase">Romaneios</span><p class="text-lg font-bold text-text-main">${lista.length}</p></div>
@@ -4819,18 +4832,83 @@
             return `CP-${ano}-${String(maior + 1).padStart(4, '0')}`;
         }
 
-        function atualizarEstoquePallets() {
-            if (!exigirPermissaoEdicao()) return;
-            const val = document.getElementById('input-saldo-base').value;
-            localStorage.setItem('savencia_saldo_base_pallets', val);
-            renderPallets();
-            salvarDadosNoFirebase();
+        
+
+        function formatarDataInputParaBR(isoStr) {
+            if (!isoStr) return new Date().toLocaleDateString('pt-BR');
+            if (/^\d{4}-\d{2}-\d{2}$/.test(isoStr)) {
+                const [y, m, d] = isoStr.split('-');
+                return `${d}/${m}/${y}`;
+            }
+            return isoStr;
+        }
+
+        function formatarDataBRParaISO(brStr) {
+            if (!brStr) return '';
+            if (/^\d{4}-\d{2}-\d{2}$/.test(brStr)) return brStr;
+            const m = String(brStr).match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+            if (m) return `${m[3]}-${m[2]}-${m[1]}`;
+            return '';
+        }
+
+        function parseClienteSelectionVale(rawVal) {
+            const val = String(rawVal || '').trim();
+            const m = val.match(/^(.*?)\s*[—-]\s*([^-—]+\/[A-Z]{2})(?:\s*\[Cód\.\s*([^\]]+)\])?$/i);
+            if (m) {
+                return { nome: m[1].trim(), cidade: m[2].trim().toUpperCase(), codigo: (m[3] || '').trim() };
+            }
+            return { nome: val, cidade: '', codigo: '' };
+        }
+
+        function buscarCadastroClientePorNomeCidade(nome, cidade, codigo = '') {
+            const clientes = consolidarClientes();
+            const nNome = normalizarTextoTransp(nome);
+            const nCid = normalizarTextoTransp(cidade);
+            return clientes.find(c => {
+                const matchNome = normalizarTextoTransp(c.nome) === nNome;
+                const matchCid = !nCid || normalizarTextoTransp(c.cidadeUF) === nCid;
+                const matchCod = !codigo || String(c.codigoCliente || '').trim() === codigo;
+                return matchNome && matchCid && matchCod;
+            }) || clientes.find(c => normalizarTextoTransp(c.nome) === nNome) || null;
+        }
+
+        function aoSelecionarClienteVale(rawVal) {
+            const parsed = parseClienteSelectionVale(rawVal);
+            const inpCli = document.getElementById('vale-cliente');
+            const inpCid = document.getElementById('vale-cidade');
+            const inpCnpj = document.getElementById('vale-cnpj');
+
+            if (parsed.cidade) {
+                const cad = buscarCadastroClientePorNomeCidade(parsed.nome, parsed.cidade, parsed.codigo);
+                if (inpCli) inpCli.value = `${parsed.nome} — ${parsed.cidade}`;
+                if (inpCid) inpCid.value = parsed.cidade;
+                if (inpCnpj) inpCnpj.value = cad?.cnpj || '';
+                return;
+            }
+
+            const clientes = consolidarClientes();
+            const norm = normalizarTextoTransp(parsed.nome);
+            if (!norm) return;
+            const matches = clientes.filter(c => normalizarTextoTransp(c.nome) === norm);
+            if (matches.length === 1) {
+                const m = matches[0];
+                if (m.cidadeUF) {
+                    if (inpCid) inpCid.value = m.cidadeUF;
+                    if (inpCli) inpCli.value = `${m.nome} — ${m.cidadeUF}`;
+                }
+                if (inpCnpj) inpCnpj.value = m.cnpj || '';
+            }
         }
 
         async function salvarValePallet(e) {
             e.preventDefault();
+            if (!exigirPermissaoEdicao()) return;
             const numeroVale = document.getElementById('vale-numero').value.trim() || gerarProximoNumeroVale();
-            const cliente = document.getElementById('vale-cliente').value.trim();
+            const parsed = parseClienteSelectionVale(document.getElementById('vale-cliente').value);
+            const cliente = parsed.nome;
+            const cidade = (document.getElementById('vale-cidade')?.value.trim() || parsed.cidade || '').toUpperCase();
+            const cad = buscarCadastroClientePorNomeCidade(cliente, cidade, parsed.codigo);
+            const cnpj = document.getElementById('vale-cnpj')?.value.trim() || cad?.cnpj || '';
             const qtd = parseInt(document.getElementById('vale-qtd').value, 10);
             const dataHoje = new Date().toLocaleDateString('pt-BR');
 
@@ -4840,273 +4918,455 @@
                 id: Date.now(),
                 numeroVale: numeroVale,
                 cliente: cliente,
-                qtd: qtd,
-                data: dataHoje
+                cidade: cidade,
+                cnpj: cnpj,
+                dataAgenda: '',
+                data: dataHoje,
+                qtd: qtd
             });
 
             await salvarTodosBancos();
             document.getElementById('form-vale-pallet').reset();
+            if (document.getElementById('vale-cnpj')) document.getElementById('vale-cnpj').value = '';
             renderValePallets();
-            renderPallets();
             Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: `Vale ${numeroVale} criado!`, showConfirmButton: false, timer: 1800 });
         }
 
-        function excluirValePallet(id) {
+        async function editarValePallet(id) {
             if (!exigirPermissaoEdicao()) return;
+            const vale = bancoValePallets.find(v => v.id === id);
+            if (!vale) return;
+
+            const dataAgendaISO = formatarDataBRParaISO(vale.dataAgenda || '');
+
+            const { value: formValues } = await Swal.fire({
+                title: `Editar Vale ${vale.numeroVale || ''}`,
+                html: `
+                    <div class="text-left space-y-3 mt-2">
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Número do Vale</label>
+                            <input id="swal-edit-vale-num" type="text" class="minimal-input" value="${vale.numeroVale || ''}">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Nome do Cliente</label>
+                            <input id="swal-edit-vale-cli" type="text" list="datalist-clientes-vale" class="minimal-input" value="${vale.cliente || ''}${vale.cidade ? ' — ' + vale.cidade : ''}">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Cidade / UF</label>
+                            <input id="swal-edit-vale-cid" type="text" class="minimal-input uppercase" placeholder="CIDADE/UF" value="${vale.cidade || ''}">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Data de Agenda</label>
+                                <input id="swal-edit-vale-agenda" type="date" class="minimal-input" value="${dataAgendaISO}">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Quantidade</label>
+                                <input id="swal-edit-vale-qtd" type="number" min="1" class="minimal-input" value="${vale.qtd || 1}">
+                            </div>
+                        </div>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonColor: '#3b82f6',
+                cancelButtonColor: '#334155',
+                confirmButtonText: 'Salvar Alterações',
+                cancelButtonText: 'Cancelar',
+                preConfirm: () => {
+                    const num = document.getElementById('swal-edit-vale-num').value.trim();
+                    const parsed = parseClienteSelectionVale(document.getElementById('swal-edit-vale-cli').value);
+                    const cidIn = (document.getElementById('swal-edit-vale-cid').value.trim() || parsed.cidade || '').toUpperCase();
+                    const cad = buscarCadastroClientePorNomeCidade(parsed.nome, cidIn, parsed.codigo);
+                    const agRaw = document.getElementById('swal-edit-vale-agenda').value;
+                    const qtd = parseInt(document.getElementById('swal-edit-vale-qtd').value, 10);
+                    if (!parsed.nome || !qtd || qtd <= 0) {
+                        Swal.showValidationMessage('Informe o nome do cliente e uma quantidade válida.');
+                        return false;
+                    }
+                    return {
+                        num,
+                        cli: parsed.nome,
+                        cidade: cidIn,
+                        cnpj: cad?.cnpj || vale.cnpj || '',
+                        dataAgenda: agRaw ? formatarDataInputParaBR(agRaw) : '',
+                        qtd
+                    };
+                }
+            });
+
+            if (formValues) {
+                vale.numeroVale = formValues.num || vale.numeroVale;
+                vale.cliente = formValues.cli;
+                vale.cidade = formValues.cidade;
+                vale.cnpj = formValues.cnpj;
+                vale.dataAgenda = formValues.dataAgenda;
+                vale.qtd = formValues.qtd;
+                await salvarTodosBancos();
+                renderValePallets();
+                Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Vale atualizado!', showConfirmButton: false, timer: 1800 });
+            }
+        }
+
+        function removerValePalletDireto(id) {
+            if (!exigirPermissaoEdicao()) return;
+            const vale = bancoValePallets.find(v => v.id === id);
+            if (!vale) return;
             Swal.fire({
-                title: 'Baixar Vale de Cliente?', text: 'Confirmar devolução/baixa destes pallets?', icon: 'question', showCancelButton: true,
-                confirmButtonColor: '#10b981', cancelButtonColor: '#334155', confirmButtonText: 'Sim, dar baixa'
+                title: `Excluir Vale ${vale.numeroVale || ''}?`,
+                text: `Deseja excluir este lançamento de ${vale.cliente} sem registrar coleta no histórico?`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ef4444',
+                cancelButtonColor: '#334155',
+                confirmButtonText: 'Sim, excluir',
+                cancelButtonText: 'Cancelar'
             }).then(async (result) => {
-                if(result.isConfirmed) {
+                if (result.isConfirmed) {
                     bancoValePallets = bancoValePallets.filter(v => v.id !== id);
                     await salvarTodosBancos();
                     renderValePallets();
-                    renderPallets();
+                    Swal.fire({ toast: true, position: 'top-end', icon: 'info', title: 'Vale excluído!', showConfirmButton: false, timer: 1800 });
                 }
             });
         }
 
-        async function salvarValeTransportadora(e) {
-            e.preventDefault();
-            const numeroControle = document.getElementById('vale-transp-num-controle').value.trim() || gerarProximoNumeroControleTransp();
-            const transportadora = obterNomeExibicaoTransportadora(document.getElementById('vale-transp-nome').value.trim());
-            const obs = document.getElementById('vale-transp-obs').value.trim() || 'Sem ref.';
-            const qtd = parseInt(document.getElementById('vale-transp-qtd').value, 10);
-            const dataHoje = new Date().toLocaleDateString('pt-BR');
+        async function excluirValePallet(id) {
+            if (!exigirPermissaoEdicao()) return;
+            const vale = bancoValePallets.find(v => v.id === id);
+            if (!vale) return;
 
-            if(!transportadora || qtd <= 0) return;
+            const hojeISO = new Date().toISOString().split('T')[0];
 
-            bancoValeTransportadoras.push({
-                id: Date.now(),
-                numeroControle: numeroControle,
-                transportadora: transportadora,
-                obs: obs,
-                qtd: qtd,
-                data: dataHoje
+            const { value: coleta } = await Swal.fire({
+                title: `Confirmar Coleta — ${vale.numeroVale || ''}`,
+                html: `
+                    <div class="text-left space-y-3 mt-2">
+                        <p class="text-xs opacity-80">Cliente: <strong>${vale.cliente}</strong>${vale.cidade ? ` — ${vale.cidade}` : ''}<br>Pendente: <strong>${vale.qtd}</strong> pallets</p>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Nome do Transportador</label>
+                            <input id="swal-coleta-transp" type="text" list="datalist-transportadoras-global" class="minimal-input uppercase" placeholder="Ex: TRANSFRIO">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Data da Coleta</label>
+                                <input id="swal-coleta-data" type="date" class="minimal-input" value="${hojeISO}">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Quantidade Coletada</label>
+                                <input id="swal-coleta-qtd" type="number" min="1" max="${vale.qtd}" class="minimal-input" value="${vale.qtd}">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Valor da Coleta (R$)</label>
+                            <input id="swal-coleta-valor" type="number" step="0.01" min="0" class="minimal-input" placeholder="0,00">
+                        </div>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonColor: '#10b981',
+                cancelButtonColor: '#334155',
+                confirmButtonText: 'Confirmar Coleta',
+                cancelButtonText: 'Cancelar',
+                preConfirm: () => {
+                    const transp = document.getElementById('swal-coleta-transp').value.trim().toUpperCase();
+                    const dataRaw = document.getElementById('swal-coleta-data').value;
+                    const qtd = parseInt(document.getElementById('swal-coleta-qtd').value, 10);
+                    const valorColeta = parseFloat(document.getElementById('swal-coleta-valor').value) || 0;
+                    if (!transp) {
+                        Swal.showValidationMessage('Informe o nome do transportador.');
+                        return false;
+                    }
+                    if (!dataRaw) {
+                        Swal.showValidationMessage('Informe a data da coleta.');
+                        return false;
+                    }
+                    if (!qtd || qtd <= 0) {
+                        Swal.showValidationMessage('Informe uma quantidade válida.');
+                        return false;
+                    }
+                    return {
+                        transportador: obterNomeExibicaoTransportadora(transp),
+                        dataColeta: formatarDataInputParaBR(dataRaw),
+                        qtd,
+                        valorColeta
+                    };
+                }
             });
 
-            await salvarTodosBancos();
-            document.getElementById('form-vale-transportadora').reset();
-            renderValePallets();
-            renderPallets();
-            Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: `Controle ${numeroControle} registrado!`, showConfirmButton: false, timer: 1800 });
+            if (coleta) {
+                bancoHistoricoColetas.unshift({
+                    id: Date.now(),
+                    numeroVale: vale.numeroVale || '',
+                    cliente: vale.cliente,
+                    cidade: vale.cidade || '',
+                    cnpj: vale.cnpj || '',
+                    transportador: coleta.transportador,
+                    dataColeta: coleta.dataColeta,
+                    qtd: coleta.qtd,
+                    valorColeta: coleta.valorColeta
+                });
+
+                if (coleta.qtd >= vale.qtd) {
+                    bancoValePallets = bancoValePallets.filter(v => v.id !== id);
+                } else {
+                    vale.qtd -= coleta.qtd;
+                }
+
+                await salvarTodosBancos();
+                renderValePallets();
+                Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Coleta confirmada e salva no histórico!', showConfirmButton: false, timer: 2000 });
+            }
         }
 
-        function excluirValeTransportadora(id) {
+        async function editarHistoricoColeta(id) {
+            if (!exigirPermissaoEdicao()) return;
+            const reg = bancoHistoricoColetas.find(h => h.id === id);
+            if (!reg) return;
+
+            const dataColetaISO = formatarDataBRParaISO(reg.dataColeta || '');
+
+            const { value: formValues } = await Swal.fire({
+                title: `Editar Coleta ${reg.numeroVale || ''}`,
+                html: `
+                    <div class="text-left space-y-3 mt-2">
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Nº do Vale</label>
+                            <input id="swal-hist-num" type="text" class="minimal-input" value="${reg.numeroVale || ''}">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Cliente</label>
+                            <input id="swal-hist-cli" type="text" list="datalist-clientes-vale" class="minimal-input" value="${reg.cliente || ''}${reg.cidade ? ' — ' + reg.cidade : ''}">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Transportador</label>
+                            <input id="swal-hist-transp" type="text" list="datalist-transportadoras-global" class="minimal-input uppercase" value="${reg.transportador || ''}">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Data da Coleta</label>
+                                <input id="swal-hist-data" type="date" class="minimal-input" value="${dataColetaISO}">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Quantidade</label>
+                                <input id="swal-hist-qtd" type="number" min="1" class="minimal-input" value="${reg.qtd || 1}">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Valor da Coleta (R$)</label>
+                            <input id="swal-hist-valor" type="number" step="0.01" min="0" class="minimal-input" placeholder="0,00" value="${reg.valorColeta ? Number(reg.valorColeta).toFixed(2) : ''}">
+                        </div>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonColor: '#3b82f6',
+                cancelButtonColor: '#334155',
+                confirmButtonText: 'Salvar',
+                cancelButtonText: 'Cancelar',
+                preConfirm: () => {
+                    const numeroVale = document.getElementById('swal-hist-num').value.trim();
+                    const parsedCli = parseClienteSelectionVale(document.getElementById('swal-hist-cli').value);
+                    const transp = document.getElementById('swal-hist-transp').value.trim().toUpperCase();
+                    const dataRaw = document.getElementById('swal-hist-data').value;
+                    const qtd = parseInt(document.getElementById('swal-hist-qtd').value, 10);
+                    const valorColeta = parseFloat(document.getElementById('swal-hist-valor').value) || 0;
+                    if (!parsedCli.nome || !transp || !dataRaw || !qtd || qtd <= 0) {
+                        Swal.showValidationMessage('Preencha cliente, transportador, data e quantidade válida.');
+                        return false;
+                    }
+                    return {
+                        numeroVale,
+                        cliente: parsedCli.nome,
+                        cidade: parsedCli.cidade || reg.cidade || '',
+                        transportador: obterNomeExibicaoTransportadora(transp),
+                        dataColeta: formatarDataInputParaBR(dataRaw),
+                        qtd,
+                        valorColeta
+                    };
+                }
+            });
+
+            if (formValues) {
+                reg.numeroVale = formValues.numeroVale;
+                reg.cliente = formValues.cliente;
+                reg.cidade = formValues.cidade;
+                reg.transportador = formValues.transportador;
+                reg.dataColeta = formValues.dataColeta;
+                reg.qtd = formValues.qtd;
+                reg.valorColeta = formValues.valorColeta;
+                await salvarTodosBancos();
+                renderValePallets();
+                Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Histórico atualizado!', showConfirmButton: false, timer: 1800 });
+            }
+        }
+
+        function excluirHistoricoColeta(id) {
             if (!exigirPermissaoEdicao()) return;
             Swal.fire({
-                title: 'Baixar Pallets da Transportadora?', text: 'Confirmar devolução/baixa destes pallets?', icon: 'question', showCancelButton: true,
-                confirmButtonColor: '#10b981', cancelButtonColor: '#334155', confirmButtonText: 'Sim, dar baixa'
+                title: 'Excluir Registro do Histórico?',
+                text: 'Deseja remover este registro de coleta do histórico?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ef4444',
+                cancelButtonColor: '#334155',
+                confirmButtonText: 'Sim, excluir',
+                cancelButtonText: 'Cancelar'
             }).then(async (result) => {
-                if(result.isConfirmed) {
-                    bancoValeTransportadoras = bancoValeTransportadoras.filter(v => v.id !== id);
+                if (result.isConfirmed) {
+                    bancoHistoricoColetas = bancoHistoricoColetas.filter(h => h.id !== id);
                     await salvarTodosBancos();
                     renderValePallets();
-                    renderPallets();
+                    Swal.fire({ toast: true, position: 'top-end', icon: 'info', title: 'Registro excluído.', showConfirmButton: false, timer: 1800 });
                 }
             });
+        }
+
+        function exportarExcelVales() {
+            if (bancoValePallets.length === 0 && bancoHistoricoColetas.length === 0) {
+                Swal.fire({ toast: true, position: 'top-end', icon: 'info', title: 'Nenhum vale ou coleta para exportar.', showConfirmButton: false, timer: 2000 });
+                return;
+            }
+            const wb = XLSX.utils.book_new();
+            const rowsVales = bancoValePallets.map((v, idx) => ({
+                "Número do Vale": v.numeroVale || `VP-${String(idx + 1).padStart(4, '0')}`,
+                "Nome do Cliente": v.cliente || '',
+                "Cidade / UF": v.cidade || '',
+                "Data de Agenda": v.dataAgenda || 'Não agendado',
+                "Quantidade": v.qtd || 0
+            }));
+            XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(rowsVales), "Vales_Clientes");
+
+            if (bancoHistoricoColetas.length > 0) {
+                const rowsHist = bancoHistoricoColetas.map(h => ({
+                    "Número do Vale": h.numeroVale || '',
+                    "Nome do Cliente": h.cliente || '',
+                    "Cidade / UF": h.cidade || '',
+                    "Transportador": h.transportador || '',
+                    "Data da Coleta": h.dataColeta || '',
+                    "Quantidade": h.qtd || 0,
+                    "Valor da Coleta (R$)": h.valorColeta || 0
+                }));
+                XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(rowsHist), "Historico_Coletas");
+            }
+
+            XLSX.writeFile(wb, `Savencia_Vale_Pallets_${new Date().toISOString().split('T')[0]}.xlsx`);
         }
 
         function renderValePallets() {
             const termo = (document.getElementById('input-busca')?.value || '').toLowerCase().trim();
+            atualizarDatalistGlobalTransportadoras();
 
-            // Preenche próximo número de vale e controle automaticamente se vazios
             const inputNumVale = document.getElementById('vale-numero');
             if (inputNumVale && !inputNumVale.value) {
                 inputNumVale.value = gerarProximoNumeroVale();
             }
-            const inputNumControle = document.getElementById('vale-transp-num-controle');
-            if (inputNumControle && !inputNumControle.value) {
-                inputNumControle.value = gerarProximoNumeroControleTransp();
-            }
 
-            // Datalist Clientes
             const dlClientes = document.getElementById('datalist-clientes-vale');
-            const clientes = [...new Set(bancoDados.map(i => i.clienteCidade).filter(Boolean))].sort((a,b) => String(a).localeCompare(String(b), undefined, {sensitivity: 'base'}));
+            const clientesConsolidados = consolidarClientes();
             if (dlClientes) {
-                dlClientes.innerHTML = clientes.map(c => `<option value="${c}"></option>`).join('');
+                // Diferencia cadastros homônimos pela Cidade/UF e Código quando houver duplicidade de nome+cidade
+                const contagemNomeCid = {};
+                clientesConsolidados.forEach(c => {
+                    const k = `${normalizarTextoTransp(c.nome)}_${normalizarTextoTransp(c.cidadeUF)}`;
+                    contagemNomeCid[k] = (contagemNomeCid[k] || 0) + 1;
+                });
+                const opcoes = clientesConsolidados.map(c => {
+                    const k = `${normalizarTextoTransp(c.nome)}_${normalizarTextoTransp(c.cidadeUF)}`;
+                    const cid = c.cidadeUF || 'SEM CIDADE/UF';
+                    if (contagemNomeCid[k] > 1 && c.codigoCliente) {
+                        return `${c.nome} — ${cid} [Cód. ${c.codigoCliente}]`;
+                    }
+                    return `${c.nome} — ${cid}`;
+                });
+                dlClientes.innerHTML = [...new Set(opcoes)].map(opt => `<option value="${opt}"></option>`).join('');
             }
 
-            // Datalist Transportadoras
-            const dlTransp = document.getElementById('datalist-transp-vale');
-            const transps = [...new Set([
-                ...bancoDados.map(i => i.transportador).filter(Boolean),
-                ...bancoMotoristas.map(m => m.transportadora).filter(Boolean)
-            ])].sort((a,b) => String(a).localeCompare(String(b), undefined, {sensitivity: 'base'}));
-            if (dlTransp) {
-                dlTransp.innerHTML = transps.map(t => `<option value="${t}"></option>`).join('');
-            }
-
-            // Tabela Vales Clientes
+            // Tabela Vales Clientes (Cidade/UF ao invés de CNPJ + botão Excluir direto)
             const tbodyVales = document.getElementById('tbody-vale-pallets');
             let totalValesCli = 0;
-            const valesCliFiltrados = bancoValePallets.filter(v =>
-                !termo ||
-                (v.numeroVale && v.numeroVale.toLowerCase().includes(termo)) ||
-                (v.cliente && v.cliente.toLowerCase().includes(termo))
-            );
+            const valesCliFiltrados = bancoValePallets.filter(v => {
+                if (!termo) return true;
+                return (v.numeroVale && v.numeroVale.toLowerCase().includes(termo)) ||
+                    (v.cliente && v.cliente.toLowerCase().includes(termo)) ||
+                    (v.cidade && v.cidade.toLowerCase().includes(termo)) ||
+                    (v.dataAgenda && String(v.dataAgenda).toLowerCase().includes(termo));
+            });
 
             if (valesCliFiltrados.length === 0) {
-                if(tbodyVales) tbodyVales.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-text-muted text-xs">Nenhum vale de cliente pendente.</td></tr>`;
+                if(tbodyVales) tbodyVales.innerHTML = `<tr><td colspan="6" class="text-center py-6 text-text-muted text-xs">Nenhum vale de cliente pendente.</td></tr>`;
             } else {
                 const htmlCli = valesCliFiltrados.map((v, idx) => {
-                    totalValesCli += v.qtd;
+                    totalValesCli += (v.qtd || 0);
                     const numExibido = v.numeroVale || `VP-${String(idx + 1).padStart(4, '0')}`;
+                    const agendaHtml = v.dataAgenda
+                        ? `<span class="text-sky-400 font-semibold">${v.dataAgenda}</span>`
+                        : `<span class="text-text-muted italic">Não agendado</span>`;
                     return `
                     <tr class="item-hover transition-colors border-b border-brand-border">
                         <td class="py-2.5 px-3 font-mono font-bold text-brand-lightBlue">${numExibido}</td>
-                        <td class="py-2.5 px-3 text-text-muted">${v.data}</td>
                         <td class="py-2.5 px-3 font-semibold text-text-main break-words">${v.cliente}</td>
+                        <td class="py-2.5 px-3 text-text-muted whitespace-nowrap">${v.cidade || '---'}</td>
+                        <td class="py-2.5 px-3">${agendaHtml}</td>
                         <td class="py-2.5 px-3 text-center font-bold text-brand-red">${v.qtd}</td>
-                        <td class="py-2.5 px-3 flex justify-center">
-                            <button onclick="excluirValePallet(${v.id})" class="edit-only p-1 text-text-muted hover:text-emerald-500 rounded transition-colors" title="Dar Baixa"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></button>
+                        <td class="py-2.5 px-3 flex justify-center gap-1.5">
+                            <button onclick="editarValePallet(${v.id})" class="edit-only p-1 text-text-muted hover:text-sky-400 rounded transition-colors" title="Editar / Agendar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path></svg></button>
+                            <button onclick="excluirValePallet(${v.id})" class="edit-only p-1 text-text-muted hover:text-emerald-500 rounded transition-colors" title="Confirmar Coleta / Baixar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></button>
+                            <button onclick="removerValePalletDireto(${v.id})" class="edit-only p-1 text-text-muted hover:text-brand-red rounded transition-colors" title="Excluir Vale (sem baixar)"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
                         </td>
                     </tr>
                 `}).join('');
                 if(tbodyVales) tbodyVales.innerHTML = htmlCli;
             }
 
-            // Tabela Vales Transportadoras
-            const tbodyTransp = document.getElementById('tbody-vale-transportadoras');
-            let totalValesTransp = 0;
-            const valesTranspFiltrados = bancoValeTransportadoras.filter(t =>
+            // Tabela Histórico de Coletas
+            const tbodyHist = document.getElementById('tbody-historico-coletas');
+            let totalColetado = 0;
+            let totalValorColetado = 0;
+            const histFiltrado = bancoHistoricoColetas.filter(h =>
                 !termo ||
-                (t.numeroControle && t.numeroControle.toLowerCase().includes(termo)) ||
-                (t.transportadora && t.transportadora.toLowerCase().includes(termo)) ||
-                (t.obs && t.obs.toLowerCase().includes(termo))
+                (h.numeroVale && h.numeroVale.toLowerCase().includes(termo)) ||
+                (h.cliente && h.cliente.toLowerCase().includes(termo)) ||
+                (h.cidade && h.cidade.toLowerCase().includes(termo)) ||
+                (h.transportador && h.transportador.toLowerCase().includes(termo)) ||
+                (h.dataColeta && h.dataColeta.toLowerCase().includes(termo))
             );
 
-            if (valesTranspFiltrados.length === 0) {
-                if(tbodyTransp) tbodyTransp.innerHTML = `<tr><td colspan="6" class="text-center py-6 text-text-muted text-xs">Nenhuma pendência com transportadoras.</td></tr>`;
+            if (histFiltrado.length === 0) {
+                if (tbodyHist) tbodyHist.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-text-muted text-xs">Nenhuma coleta registrada ainda.</td></tr>`;
             } else {
-                const htmlTr = valesTranspFiltrados.map((t, idx) => {
-                    totalValesTransp += t.qtd;
-                    const numCtrl = t.numeroControle || `CP-${String(idx + 1).padStart(4, '0')}`;
+                const htmlHist = histFiltrado.map(h => {
+                    totalColetado += (h.qtd || 0);
+                    totalValorColetado += (Number(h.valorColeta) || 0);
+                    const valColetaTxt = Number(h.valorColeta) > 0
+                        ? `R$ ${Number(h.valorColeta).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
+                        : '---';
                     return `
                     <tr class="item-hover transition-colors border-b border-brand-border">
-                        <td class="py-2.5 px-3 font-mono font-bold text-amber-500">${numCtrl}</td>
-                        <td class="py-2.5 px-3 text-text-muted">${t.data}</td>
-                        <td class="py-2.5 px-3 font-semibold text-sky-400 hover:underline cursor-pointer whitespace-nowrap" onclick="abrirMenuRomaneiosTransportadora(event, '${t.transportadora.replace(/'/g, "\\'")}')" title="${obterNomeCompletoTransportadora(t.transportadora)}">${t.transportadora}</td>
-                        <td class="py-2.5 px-3 text-text-muted break-words">${t.obs}</td>
-                        <td class="py-2.5 px-3 text-center font-bold text-amber-500">${t.qtd}</td>
-                        <td class="py-2.5 px-3 flex justify-center">
-                            <button onclick="excluirValeTransportadora(${t.id})" class="edit-only p-1 text-text-muted hover:text-emerald-500 rounded transition-colors" title="Dar Baixa"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></button>
+                        <td class="py-2.5 px-3 font-mono font-bold text-text-muted">${h.numeroVale || '---'}</td>
+                        <td class="py-2.5 px-3 font-semibold text-text-main break-words">${h.cliente || '---'}${h.cidade ? `<br><span class="text-[10px] text-text-muted">${h.cidade}</span>` : ''}</td>
+                        <td class="py-2.5 px-3 font-semibold text-sky-400">${h.transportador || '---'}</td>
+                        <td class="py-2.5 px-3 text-text-muted">${h.dataColeta || '---'}</td>
+                        <td class="py-2.5 px-3 text-center font-bold text-emerald-400">${h.qtd || 0}</td>
+                        <td class="py-2.5 px-3 text-right font-mono font-semibold text-emerald-400">${valColetaTxt}</td>
+                        <td class="py-2.5 px-3 flex justify-center gap-1.5">
+                            <button onclick="editarHistoricoColeta(${h.id})" class="edit-only p-1 text-text-muted hover:text-sky-400 rounded transition-colors" title="Editar Coleta"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path></svg></button>
+                            <button onclick="excluirHistoricoColeta(${h.id})" class="edit-only p-1 text-text-muted hover:text-brand-red rounded transition-colors" title="Excluir Coleta"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
                         </td>
                     </tr>
                 `}).join('');
-                if(tbodyTransp) tbodyTransp.innerHTML = htmlTr;
+                if (tbodyHist) tbodyHist.innerHTML = htmlHist;
             }
 
             const elCli = document.getElementById('kp-vales-clientes');
-            const elTr = document.getElementById('kp-vales-transportadoras');
-            const elTot = document.getElementById('kp-vales-total-geral');
+            const elQtdReg = document.getElementById('kp-vales-qtd-registros');
+            const elColet = document.getElementById('kp-vales-coletados');
             if(elCli) elCli.innerText = `${totalValesCli} pallets`;
-            if(elTr) elTr.innerText = `${totalValesTransp} pallets`;
-            if(elTot) elTot.innerText = `${totalValesCli + totalValesTransp} pallets`;
+            if(elQtdReg) elQtdReg.innerText = `${valesCliFiltrados.length}`;
+            if(elColet) elColet.innerText = `${totalColetado} pallets • R$ ${totalValorColetado.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
         }
 
-        function renderPallets() {
-            const saldoBase = parseInt(localStorage.getItem('savencia_saldo_base_pallets') || '0', 10);
-            const totalValesCli = bancoValePallets.reduce((acc, v) => acc + (v.qtd || 0), 0);
-            const totalValesTransp = bancoValeTransportadoras.reduce((acc, t) => acc + (t.qtd || 0), 0);
-            const totalVales = totalValesCli + totalValesTransp;
+        function renderPallets() {}
 
-            const romaneiosProcessados = new Set();
-            const historico = []; 
-
-            bancoDados.forEach(item => {
-                if(!romaneiosProcessados.has(item.romaneio)) {
-                    romaneiosProcessados.add(item.romaneio);
-                    let diaExistente = historico.find(h => h.data === item.dataSaida);
-                    if(!diaExistente) {
-                        diaExistente = { data: item.dataSaida, pallets: 0, porTransp: {} };
-                        historico.push(diaExistente);
-                    }
-                    const qtdP = item.pallets || 0;
-                    diaExistente.pallets += qtdP;
-                    const trNome = obterNomeExibicaoTransportadora(item.transportador || 'Não Informado') || 'Não Informado';
-                    if(!diaExistente.porTransp[trNome]) {
-                        diaExistente.porTransp[trNome] = { pallets: 0, romaneios: [] };
-                    }
-                    diaExistente.porTransp[trNome].pallets += qtdP;
-                    diaExistente.porTransp[trNome].romaneios.push({
-                        romaneio: item.romaneio,
-                        pallets: qtdP,
-                        motorista: item.motorista || ''
-                    });
-                }
-            });
-
-            historico.sort((a,b) => {
-                const [da, ma, ya] = a.data.split('/');
-                const [db, mb, yb] = b.data.split('/');
-                return new Date(`${ma}/${da}/${ya}`) - new Date(`${mb}/${db}/${yb}`);
-            });
-
-            let totalNaRua = 0;
-            let saldoRotativo = saldoBase;
-
-            const tbodyDiario = document.getElementById('tbody-pallets-diario');
-            if (historico.length === 0) {
-                tbodyDiario.innerHTML = `<tr><td colspan="3" class="text-center py-6 text-text-muted text-xs">Nenhum carregamento registrado.</td></tr>`;
-            } else {
-                tbodyDiario.innerHTML = historico.map((dia, idx) => {
-                    totalNaRua += dia.pallets;
-                    saldoRotativo -= dia.pallets;
-                    const transpsDia = Object.entries(dia.porTransp || {}).sort((a, b) => b[1].pallets - a[1].pallets);
-                    const subId = `pallet-dia-${idx}`;
-                    return `
-                    <tr onclick="toggleAccordion('${subId}')" class="item-hover cursor-pointer transition-colors border-b border-brand-border select-none" title="Clique para ver a quantidade carregada por transportadora">
-                        <td class="py-2.5 px-4 font-semibold text-text-main">
-                            <span class="inline-flex items-center gap-2">
-                                <svg id="icon-${subId}" class="w-3.5 h-3.5 text-sky-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                                ${dia.data}
-                                <span class="text-[10px] font-normal text-text-muted">(${transpsDia.length} transp.)</span>
-                            </span>
-                        </td>
-                        <td class="py-2.5 px-4 text-right font-bold text-brand-lightBlue">${dia.pallets}</td>
-                        <td class="py-2.5 px-4 text-right font-bold ${saldoRotativo < 0 ? 'text-brand-red' : 'text-emerald-500'}">${saldoRotativo}</td>
-                    </tr>
-                    <tr id="${subId}" class="hidden bg-brand-bg/70 border-b border-brand-border">
-                        <td colspan="3" class="p-3 sm:p-4">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-                                ${transpsDia.map(([trNome, info]) => `
-                                    <div class="bg-brand-panel border border-brand-border rounded-xl p-3 flex flex-col justify-between gap-2">
-                                        <div class="flex items-center justify-between gap-2">
-                                            <span onclick="abrirMenuRomaneiosTransportadora(event, '${trNome.replace(/'/g, "\\'")}')" class="font-bold text-xs text-sky-400 hover:underline cursor-pointer truncate" title="${obterNomeCompletoTransportadora(trNome)}">${trNome}</span>
-                                            <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-sky-500/15 text-sky-400 shrink-0">${info.pallets} pallets</span>
-                                        </div>
-                                        <div class="flex flex-wrap gap-1.5">
-                                            ${info.romaneios.map(rm => `
-                                                <span onclick="event.stopPropagation(); irParaRomaneio('${rm.romaneio}')" class="px-2 py-0.5 rounded bg-brand-bg border border-brand-border text-[10px] font-mono text-text-muted hover:text-sky-400 hover:border-sky-400 cursor-pointer transition-colors" title="${rm.motorista ? 'Mot: ' + rm.motorista : 'Ver romaneio'}">#${rm.romaneio} (${rm.pallets})</span>
-                                            `).join('')}
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </td>
-                    </tr>
-                    `;
-                }).join('');
-            }
-
-            const saldoFinal = saldoBase - totalNaRua - totalVales;
-
-            document.getElementById('kp-pallets-rua').innerText = totalNaRua;
-            document.getElementById('kp-pallets-vales').innerText = totalVales;
-            
-            const kpDisponivel = document.getElementById('kp-pallets-disponivel');
-            kpDisponivel.innerText = saldoFinal;
-            if(saldoFinal < 0) {
-                kpDisponivel.classList.remove('text-white');
-                kpDisponivel.classList.add('text-brand-red');
-            } else {
-                kpDisponivel.classList.remove('text-brand-red');
-                kpDisponivel.classList.add('text-white');
-            }
-        }
-
-        // LÓGICA DROPDOWN MODAL ROMANEIO (Em Ordem Alfabética)
+                // LÓGICA DROPDOWN MODAL ROMANEIO (Em Ordem Alfabética)
         function atualizarDropdownMotoristas(nomeMotoristaAtual = null) {
             const transp = document.getElementById('edit-rom-transp').value.toLowerCase().trim();
             const select = document.getElementById('edit-rom-motorista');
@@ -5345,7 +5605,7 @@
                 
                 let motoristaText = "<span class='text-text-muted italic font-normal'>Sem Registro</span>";
                 if(dados.motorista) {
-                    motoristaText = `<span onclick="abrirMenuRomaneiosMotorista(event, '${dados.motorista.replace(/'/g, "\\'")}')" class="font-bold text-text-main hover:text-sky-400 hover:underline cursor-pointer" title="Ver todos os romaneios de ${dados.motorista}">${dados.motorista}</span>`;
+                    motoristaText = `<span onclick="abrirMenuRomaneiosMotorista(event, '${dados.motorista.replace(/'/g, "\\'")}', '${(dados.transportador || '').replace(/'/g, "\\'")}')" class="font-bold text-text-main hover:text-sky-400 hover:underline cursor-pointer" title="Ver todos os romaneios de ${dados.motorista} (${dados.transportador || ''})">${dados.motorista}</span>`;
                     if(dados.placa) motoristaText += ` <span class="text-[10px] font-mono bg-brand-bg border border-brand-border px-1 rounded ml-1 text-text-muted">${dados.placa}</span>`;
                 }
 
@@ -5447,9 +5707,8 @@
                                         <td class="px-4 py-3 font-mono text-slate-400 font-medium">${n.loja}</td>
                                         <td class="px-4 py-3 font-mono font-bold text-text-main">${n.nf}</td>
                                         <td class="px-4 py-3 font-mono">${dataFat}</td>
-                                        <td class="px-4 py-3 truncate max-w-[260px] text-slate-400 font-medium" title="${n.enderecoCompleto || n.clienteCidade}">
-                                            <span class="text-text-main font-semibold">${n.clienteCidade}</span>
-                                            ${n.cnpjCliente ? `<br><span class="text-[10px] font-mono text-sky-400">CNPJ: ${n.cnpjCliente}</span>` : ''}
+                                        <td class="px-4 py-3 truncate max-w-[260px] text-slate-400 font-medium" title="Clique para ver detalhes completos do cliente (XML)">
+                                            <span onclick="event.stopPropagation(); abrirDetalhesClientePorNota('${n.nf}', '${romaneio}')" class="text-sky-400 hover:underline font-semibold cursor-pointer">${n.clienteCidade}</span>
                                             ${n.enderecoCompleto ? `<br><span class="text-[10px] text-text-muted">${n.enderecoCompleto}</span>` : ''}
                                         </td>
                                         <td class="px-4 py-3 text-right font-bold text-text-main">R$ ${n.valorNF.toLocaleString('pt-BR', {minimumFractionDigits:2})}</td>
@@ -5574,7 +5833,10 @@
             else { c.classList.add('hidden'); if(icon) icon.classList.remove(rotClass); }
         }
 
-        function fecharModal(id) { document.getElementById(id).classList.add('hidden'); }
+        function fecharModal(id) {
+            if (id === 'modal-auth-firebase' && (!usuarioAtual || usuarioAtual.status !== 'approved')) return;
+            document.getElementById(id).classList.add('hidden');
+        }
         
         // ==========================================
         // ALIMENTAÇÃO DE PESO DOS ROMANEIOS POR IMAGEM (OCR) E TABELA
@@ -6744,6 +7006,8 @@
                     if (inpB) inpB.value = "";
                     const sData = document.getElementById('select-filtro-data');
                     if (sData) sData.value = "";
+            const lblCarregData = document.getElementById('label-filtro-carreg-data');
+            if (lblCarregData) lblCarregData.textContent = "Todas as Datas";
                     const sTransp = document.getElementById('select-filtro-transp');
                     if (sTransp) sTransp.value = "";
                     const sMot = document.getElementById('select-filtro-motorista');
@@ -7293,14 +7557,17 @@
             return c;
         }
 
-        function obterHistoricoFaltasMotorista(nomeMotorista) {
+        function obterHistoricoFaltasMotorista(nomeMotorista, nomeTransp = '') {
             if (!nomeMotorista) return [];
             const nomeNorm = nomeMotorista.trim().toUpperCase();
+            const transpNorm = nomeTransp ? obterNomeExibicaoTransportadora(nomeTransp) : '';
             const lista = [];
             bancoCarregamentos.forEach(c => {
                 normalizarExistenteCarregamento(c);
                 (c.ocorrencias || []).forEach(o => {
-                    if ((o.motorista || "").trim().toUpperCase() === nomeNorm) {
+                    const matchMot = (o.motorista || "").trim().toUpperCase() === nomeNorm;
+                    const matchTransp = !transpNorm || obterNomeExibicaoTransportadora(o.transportadora || '') === transpNorm;
+                    if (matchMot && matchTransp) {
                         lista.push({
                             data: c.dataCarregamento,
                             tipo: o.tipo || "CARRETA",
@@ -7835,8 +8102,11 @@
                 dataDefault = datas[0];
             }
 
-            selData.innerHTML = `<option value="">Todas as Datas (${datas.length})</option>` +
-                datas.map(d => `<option value="${d}" ${d === dataDefault ? 'selected' : ''}>${d}${d === hoje ? ' (Hoje)' : ''}</option>`).join('');
+            selData.value = dataDefault || '';
+            const lblCarregData = document.getElementById('label-filtro-carreg-data');
+            if (lblCarregData) {
+                lblCarregData.textContent = dataDefault ? `${dataDefault}${dataDefault === hoje ? ' (Hoje)' : ''}` : `Todas as Datas (${datas.length})`;
+            }
 
             const transps = [...new Set(
                 bancoCarregamentos.flatMap(c => (c.ocorrencias || []).map(o => o.transportadora).filter(Boolean))
@@ -7996,6 +8266,14 @@
             });
 
             container.innerHTML = Object.entries(gruposPorData).map(([dataStr, listaDoDia]) => {
+                const romsDiaSet = new Set();
+                let palletsDia = 0;
+                bancoDados.forEach(r => {
+                    if (r.dataSaida === dataStr && !romsDiaSet.has(r.romaneio)) {
+                        romsDiaSet.add(r.romaneio);
+                        palletsDia += (r.pallets || 0);
+                    }
+                });
                 return `
                 <div class="space-y-4">
                     ${listaDoDia.map(c => {
@@ -8028,6 +8306,7 @@
                                             <h3 class="text-base font-bold text-text-main">Carregamento de <span class="text-brand-lightBlue">${c.dataCarregamento}</span></h3>
                                             <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">Aproveitamento Fábrica: ${aprovCap}%</span>
                                             <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">% Não Carregado: ${percNaoCarreg}%</span>
+                                            <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-sky-500/15 text-sky-400 border border-sky-500/30">Pallets Carregados: ${palletsDia}</span>
                                         </div>
                                         <p class="text-xs text-text-muted mt-0.5">Capacidade Fábrica: <strong>${pesoCap.toLocaleString('pt-BR', {minimumFractionDigits:2})} kg</strong></p>
                                     </div>
@@ -8138,7 +8417,7 @@
                                                             <tr class="item-hover">
                                                                 <td class="py-2.5 px-4 font-bold text-text-main">${o.tipo === 'TRUCK' ? '🚚 TRUCK' : '🚛 CARRETA'}</td>
                                                                 <td class="py-2.5 px-4 font-bold text-sky-400 ${o.transportadora ? 'hover:underline cursor-pointer' : ''}" ${o.transportadora ? `onclick="abrirMenuRomaneiosTransportadora(event, '${o.transportadora.replace(/'/g, "\\'")}')"` : ''} title="${nomeCompTransp}">${o.transportadora || '---'}</td>
-                                                                <td class="py-2.5 px-4 font-bold text-text-main ${o.motorista ? 'hover:text-sky-400 hover:underline cursor-pointer' : ''}" ${o.motorista ? `onclick="abrirMenuRomaneiosMotorista(event, '${o.motorista.replace(/'/g, "\\'")}')"` : ''}>${o.motorista || '---'}</td>
+                                                                <td class="py-2.5 px-4 font-bold text-text-main ${o.motorista ? 'hover:text-sky-400 hover:underline cursor-pointer' : ''}" ${o.motorista ? `onclick="abrirMenuRomaneiosMotorista(event, '${o.motorista.replace(/'/g, "\\'")}', '${(o.transportadora || '').replace(/'/g, "\\'")}')"` : ''}>${o.motorista || '---'}</td>
                                                                 <td class="py-2.5 px-4">
                                                                     <span class="px-2.5 py-0.5 rounded-md bg-amber-500/15 text-amber-400 border border-amber-500/30 font-bold text-[11px]">${o.motivo || 'NÃO VEIO'}</span>
                                                                 </td>
@@ -8165,6 +8444,190 @@
 
 
 
+
+        // ==========================================
+        // CALENDÁRIO INTERATIVO PARA FILTROS DE DATA
+        // ==========================================
+        let calFiltroTipoAtivo = 'principal';
+        let calFiltroMes = new Date().getMonth();
+        let calFiltroAno = new Date().getFullYear();
+
+        function obterMapaDatasComLancamento(tipo) {
+            const mapa = new Map();
+            if (tipo === 'carregamentos') {
+                bancoCarregamentos.forEach(c => {
+                    if (c.dataCarregamento) {
+                        mapa.set(c.dataCarregamento, (mapa.get(c.dataCarregamento) || 0) + 1);
+                    }
+                });
+            } else {
+                const romsPorData = {};
+                bancoDados.forEach(r => {
+                    if (r.dataSaida) {
+                        if (!romsPorData[r.dataSaida]) romsPorData[r.dataSaida] = new Set();
+                        romsPorData[r.dataSaida].add(r.romaneio);
+                    }
+                });
+                Object.entries(romsPorData).forEach(([dt, setR]) => mapa.set(dt, setR.size));
+            }
+            return mapa;
+        }
+
+        function abrirCalendarioFiltro(tipo, anchorEl) {
+            const pop = document.getElementById('popover-calendario-filtro');
+            if (!pop) return;
+
+            const jaAbertoMesmoTipo = !pop.classList.contains('hidden') && calFiltroTipoAtivo === tipo;
+            if (jaAbertoMesmoTipo) {
+                pop.classList.add('hidden');
+                return;
+            }
+
+            calFiltroTipoAtivo = tipo;
+            const dataSel = tipo === 'carregamentos'
+                ? (document.getElementById('filtro-carreg-data')?.value || '')
+                : (filtroDataAtiva || '');
+
+            const mapaDatas = obterMapaDatasComLancamento(tipo);
+            let refData = dataSel;
+            if (!refData && mapaDatas.size > 0) {
+                refData = [...mapaDatas.keys()].sort((a, b) => converterDataBRParaTimestamp(b) - converterDataBRParaTimestamp(a))[0];
+            }
+
+            if (refData && /^\d{2}\/\d{2}\/\d{4}$/.test(refData)) {
+                const [, m, y] = refData.split('/').map(Number);
+                calFiltroMes = m - 1;
+                calFiltroAno = y;
+            } else {
+                const hoje = new Date();
+                calFiltroMes = hoje.getMonth();
+                calFiltroAno = hoje.getFullYear();
+            }
+
+            renderizarCalendarioFiltro();
+
+            const rect = anchorEl.getBoundingClientRect();
+            const popW = 288;
+            let left = rect.left;
+            if (left + popW > window.innerWidth - 12) left = Math.max(12, window.innerWidth - popW - 12);
+            let top = rect.bottom + 6;
+            if (top + 320 > window.innerHeight) top = Math.max(12, rect.top - 320);
+
+            pop.style.left = `${left}px`;
+            pop.style.top = `${top}px`;
+            pop.classList.remove('hidden');
+        }
+
+        function navegarMesCalendarioFiltro(delta) {
+            calFiltroMes += delta;
+            if (calFiltroMes < 0) { calFiltroMes = 11; calFiltroAno--; }
+            else if (calFiltroMes > 11) { calFiltroMes = 0; calFiltroAno++; }
+            renderizarCalendarioFiltro();
+        }
+
+        function renderizarCalendarioFiltro() {
+            const meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+            const tituloEl = document.getElementById('cal-filtro-mes-ano');
+            if (tituloEl) tituloEl.textContent = `${meses[calFiltroMes]} ${calFiltroAno}`;
+
+            const grid = document.getElementById('cal-filtro-grid');
+            if (!grid) return;
+
+            const mapaDatas = obterMapaDatasComLancamento(calFiltroTipoAtivo);
+            const dataSel = calFiltroTipoAtivo === 'carregamentos'
+                ? (document.getElementById('filtro-carreg-data')?.value || '')
+                : (filtroDataAtiva || '');
+
+            const primeiroDiaSemana = new Date(calFiltroAno, calFiltroMes, 1).getDay();
+            const diasNoMes = new Date(calFiltroAno, calFiltroMes + 1, 0).getDate();
+
+            let html = '';
+            for (let i = 0; i < primeiroDiaSemana; i++) {
+                html += `<div></div>`;
+            }
+
+            for (let d = 1; d <= diasNoMes; d++) {
+                const dd = String(d).padStart(2, '0');
+                const mm = String(calFiltroMes + 1).padStart(2, '0');
+                const dataBR = `${dd}/${mm}/${calFiltroAno}`;
+                const qtdLanc = mapaDatas.get(dataBR) || 0;
+                const selecionado = dataSel === dataBR;
+
+                let cls = 'relative py-1.5 rounded-lg text-xs transition-all cursor-pointer ';
+                if (selecionado) {
+                    cls += 'bg-brand-blue text-white font-bold shadow-sm';
+                } else if (qtdLanc > 0) {
+                    cls += 'bg-sky-500/20 text-sky-400 border border-sky-400/50 font-bold hover:bg-sky-500/30';
+                } else {
+                    cls += 'text-text-muted/60 hover:bg-brand-bg hover:text-text-main';
+                }
+
+                const titleTxt = qtdLanc > 0
+                    ? `${dataBR}: ${qtdLanc} ${calFiltroTipoAtivo === 'carregamentos' ? 'registro(s)' : 'romaneio(s)'}`
+                    : `${dataBR}: sem lançamentos`;
+
+                html += `<button type="button" onclick="selecionarDataCalendarioFiltro('${dataBR}')" class="${cls}" title="${titleTxt}">
+                    ${d}
+                    ${qtdLanc > 0 && !selecionado ? '<span class="w-1 h-1 rounded-full bg-emerald-400 absolute bottom-0.5 left-1/2 -translate-x-1/2"></span>' : ''}
+                </button>`;
+            }
+
+            grid.innerHTML = html;
+        }
+
+        function selecionarDataCalendarioFiltro(dataBR) {
+            const pop = document.getElementById('popover-calendario-filtro');
+            if (pop) pop.classList.add('hidden');
+
+            if (calFiltroTipoAtivo === 'carregamentos') {
+                const inp = document.getElementById('filtro-carreg-data');
+                const lbl = document.getElementById('label-filtro-carreg-data');
+                if (inp) inp.value = dataBR;
+                if (lbl) lbl.textContent = dataBR ? `${dataBR}${dataBR === obterDataHojeBR() ? ' (Hoje)' : ''}` : 'Todas as Datas';
+                renderCarregamentos();
+            } else {
+                const inp = document.getElementById('select-filtro-data');
+                const lbl = document.getElementById('label-filtro-data');
+                if (inp) inp.value = dataBR;
+                if (lbl) lbl.textContent = dataBR ? `${dataBR}${dataBR === obterDataHojeBR() ? ' (Hoje)' : ''}` : 'Todas as Datas';
+                setFiltroData(dataBR);
+            }
+        }
+
+        document.addEventListener('click', (e) => {
+            const pop = document.getElementById('popover-calendario-filtro');
+            if (!pop || pop.classList.contains('hidden')) return;
+            const clicouBotao = e.target.closest('#btn-filtro-data') || e.target.closest('#btn-filtro-carreg-data');
+            if (!pop.contains(e.target) && !clicouBotao) {
+                pop.classList.add('hidden');
+            }
+        });
     </script>
+
+    <!-- POPOVER CALENDÁRIO INTERATIVO DOS FILTROS DE DATA -->
+    <div id="popover-calendario-filtro" class="hidden fixed z-[60] w-72 bg-brand-panel border border-brand-border rounded-2xl shadow-2xl p-3.5 select-none">
+        <div class="flex items-center justify-between mb-2.5">
+            <button type="button" onclick="navegarMesCalendarioFiltro(-1)" class="p-1.5 rounded-lg bg-brand-bg border border-brand-border hover:border-sky-400 text-text-main transition-colors" title="Mês anterior">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <span id="cal-filtro-mes-ano" class="text-xs font-bold text-text-main capitalize"></span>
+            <button type="button" onclick="navegarMesCalendarioFiltro(1)" class="p-1.5 rounded-lg bg-brand-bg border border-brand-border hover:border-sky-400 text-text-main transition-colors" title="Próximo mês">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+        </div>
+        <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-text-muted uppercase mb-1">
+            <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+        </div>
+        <div id="cal-filtro-grid" class="grid grid-cols-7 gap-1 text-center text-xs"></div>
+        <div class="mt-3 pt-2.5 border-t border-brand-border flex items-center justify-between gap-2 text-[11px]">
+            <span class="flex items-center gap-1.5 text-text-muted">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-500/40 border border-sky-400 inline-block"></span>
+                Com lançamento
+            </span>
+            <button type="button" onclick="selecionarDataCalendarioFiltro('')" class="px-2.5 py-1 rounded-lg bg-brand-bg border border-brand-border hover:border-sky-400 text-sky-400 font-semibold transition-colors">
+                Todas as Datas
+            </button>
+        </div>
+    </div>
 </body>
 </html>
