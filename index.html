@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="origin">
-    <title>SAVENCIA - Logística Avançada</title>
+    <title>ProLog - Savencia</title>
     
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -698,22 +698,29 @@
                     </form>
                 </div>
 
-                <!-- Formulário Motorista (Colapsável) -->
-                <div id="box-form-mot" class="hidden bg-brand-panel rounded-xl p-5 mb-5 border border-brand-border">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-xs font-bold uppercase tracking-wider text-sky-400" id="titulo-form-mot">Novo Motorista</h3>
-                        <button type="button" onclick="cancelarEdicaoMotorista(true)" class="text-xs text-text-muted hover:text-text-main">&times; Fechar</button>
-                    </div>
-                    <form id="form-motoristas" class="grid grid-cols-1 md:grid-cols-12 gap-3 items-end" onsubmit="salvarMotorista(event)">
-                        <div class="md:col-span-4"><label class="block text-xs font-medium text-text-muted mb-1">Nome</label><input required type="text" id="mot-nome" class="minimal-input uppercase"></div>
-                        <div class="md:col-span-2"><label class="block text-xs font-medium text-text-muted mb-1">Placa</label><input required type="text" id="mot-placa" placeholder="ABC-1234" class="minimal-input uppercase"></div>
-                        <div class="md:col-span-3"><label class="block text-xs font-medium text-text-muted mb-1">Transportadora</label><input required type="text" list="datalist-transportadoras-global" id="mot-transp" placeholder="Selecione..." class="minimal-input uppercase"><datalist id="datalist-transportadoras-global"></datalist></div>
-                        <div class="md:col-span-1"><label class="block text-xs font-medium text-text-muted mb-1">Pallets</label><input required type="number" id="mot-pallets" class="minimal-input" min="1"></div>
-                        <div class="md:col-span-2 flex justify-end gap-2">
-                            <button type="button" onclick="cancelarEdicaoMotorista(true)" id="btn-cancelar-mot" class="px-3 py-2.5 bg-brand-bg text-text-muted text-xs font-semibold rounded-xl hidden border border-brand-border">Cancelar</button>
-                            <button type="submit" id="btn-salvar-mot" class="w-full px-4 py-2.5 bg-brand-blue hover:bg-brand-lightBlue text-white text-xs font-semibold rounded-xl transition-colors">Salvar</button>
+                <!-- Submenu Modal Centralizado: Novo / Editar Motorista -->
+                <div id="box-form-mot" class="hidden fixed inset-0 bg-slate-950/75 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto" onclick="if(event.target===this) cancelarEdicaoMotorista(true)">
+                    <div class="bg-brand-panel rounded-2xl shadow-2xl w-full max-w-xl border border-brand-border overflow-hidden my-4">
+                        <div class="px-6 py-4 border-b border-brand-border flex items-center justify-between bg-brand-bg/60">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-brand-blue"></span>
+                                <h3 class="text-sm font-bold uppercase tracking-wider text-sky-400" id="titulo-form-mot">Novo Motorista</h3>
+                            </div>
+                            <button type="button" onclick="cancelarEdicaoMotorista(true)" class="text-text-muted hover:text-brand-red transition-colors bg-brand-bg rounded-full p-1.5" title="Fechar">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            </button>
                         </div>
-                    </form>
+                        <form id="form-motoristas" class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4" onsubmit="salvarMotorista(event)">
+                            <div class="sm:col-span-2"><label class="block text-xs font-medium text-text-muted mb-1">Nome</label><input required type="text" id="mot-nome" placeholder="Nome do motorista..." class="minimal-input uppercase"></div>
+                            <div><label class="block text-xs font-medium text-text-muted mb-1">Placa</label><input required type="text" id="mot-placa" placeholder="ABC-1234" class="minimal-input uppercase"></div>
+                            <div><label class="block text-xs font-medium text-text-muted mb-1">Pallets</label><input required type="number" id="mot-pallets" placeholder="28" class="minimal-input" min="1"></div>
+                            <div class="sm:col-span-2"><label class="block text-xs font-medium text-text-muted mb-1">Transportadora</label><input required type="text" list="datalist-transportadoras-global" id="mot-transp" placeholder="Selecione..." class="minimal-input uppercase"><datalist id="datalist-transportadoras-global"></datalist></div>
+                            <div class="sm:col-span-2 pt-3 border-t border-brand-border flex justify-end gap-2.5">
+                                <button type="button" onclick="cancelarEdicaoMotorista(true)" id="btn-cancelar-mot" class="px-4 py-2.5 bg-brand-bg text-text-muted hover:text-text-main text-xs font-semibold rounded-xl border border-brand-border transition-colors">Cancelar</button>
+                                <button type="submit" id="btn-salvar-mot" class="px-6 py-2.5 bg-brand-blue hover:bg-brand-lightBlue text-white text-xs font-semibold rounded-xl transition-colors shadow-sm">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
                 <!-- Pastas das Transportadoras (Clique na pasta abre os motoristas; clique no nome abre os romaneios) -->
@@ -886,6 +893,10 @@
                             <div class="sm:col-span-2">
                                 <button type="submit" class="w-full bg-brand-red hover:bg-red-500 text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors">Criar Vale</button>
                             </div>
+                            <div class="sm:col-span-12">
+                                <label class="block text-[10px] font-medium text-text-muted mb-1">Observação</label>
+                                <input type="text" id="vale-obs" placeholder="Observação opcional (ex: referência, contato, motivo...)" class="minimal-input py-2 px-3 text-xs bg-brand-bg border-brand-border">
+                            </div>
                         </form>
                         
                         <div class="overflow-x-auto w-full border border-brand-border rounded-xl">
@@ -896,6 +907,7 @@
                                         <th class="py-2.5 px-3 font-semibold uppercase text-[10px]">Nome do Cliente</th>
                                         <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Cidade / UF</th>
                                         <th class="py-2.5 px-3 font-semibold uppercase text-[10px] whitespace-nowrap">Data de Agenda</th>
+                                        <th class="py-2.5 px-3 font-semibold uppercase text-[10px]">Observação</th>
                                         <th class="py-2.5 px-3 font-semibold uppercase text-[10px] text-center whitespace-nowrap">Quantidade</th>
                                         <th class="py-2.5 px-3 font-semibold uppercase text-[10px] text-center whitespace-nowrap">Ações</th>
                                     </tr>
@@ -3630,6 +3642,10 @@
                     const inp = document.getElementById('mot-transp');
                     if (inp) inp.value = transpPreSelecionada;
                 }
+                setTimeout(() => {
+                    const inpNome = document.getElementById('mot-nome');
+                    if (inpNome) inpNome.focus();
+                }, 50);
             } else {
                 box.classList.add('hidden');
             }
@@ -3803,7 +3819,7 @@
             const bc = document.getElementById('btn-cancelar-mot');
             if (t) t.innerText = "Novo Motorista";
             if (bs) bs.innerText = "Salvar";
-            if (bc) bc.classList.add('hidden');
+            if (bc) bc.classList.remove('hidden');
             if (fechar) toggleFormMotorista(false);
         }
 
@@ -4910,6 +4926,7 @@
             const cad = buscarCadastroClientePorNomeCidade(cliente, cidade, parsed.codigo);
             const cnpj = document.getElementById('vale-cnpj')?.value.trim() || cad?.cnpj || '';
             const qtd = parseInt(document.getElementById('vale-qtd').value, 10);
+            const obs = document.getElementById('vale-obs')?.value.trim() || '';
             const dataHoje = new Date().toLocaleDateString('pt-BR');
 
             if(!cliente || qtd <= 0) return;
@@ -4920,6 +4937,7 @@
                 cliente: cliente,
                 cidade: cidade,
                 cnpj: cnpj,
+                obs: obs,
                 dataAgenda: '',
                 data: dataHoje,
                 qtd: qtd
@@ -4965,6 +4983,10 @@
                                 <input id="swal-edit-vale-qtd" type="number" min="1" class="minimal-input" value="${vale.qtd || 1}">
                             </div>
                         </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Observação</label>
+                            <input id="swal-edit-vale-obs" type="text" class="minimal-input" placeholder="Observação opcional..." value="${String(vale.obs || '').replace(/"/g, '&quot;')}">
+                        </div>
                     </div>
                 `,
                 showCancelButton: true,
@@ -4979,6 +5001,7 @@
                     const cad = buscarCadastroClientePorNomeCidade(parsed.nome, cidIn, parsed.codigo);
                     const agRaw = document.getElementById('swal-edit-vale-agenda').value;
                     const qtd = parseInt(document.getElementById('swal-edit-vale-qtd').value, 10);
+                    const obs = document.getElementById('swal-edit-vale-obs')?.value.trim() || '';
                     if (!parsed.nome || !qtd || qtd <= 0) {
                         Swal.showValidationMessage('Informe o nome do cliente e uma quantidade válida.');
                         return false;
@@ -4989,7 +5012,8 @@
                         cidade: cidIn,
                         cnpj: cad?.cnpj || vale.cnpj || '',
                         dataAgenda: agRaw ? formatarDataInputParaBR(agRaw) : '',
-                        qtd
+                        qtd,
+                        obs
                     };
                 }
             });
@@ -5001,6 +5025,7 @@
                 vale.cnpj = formValues.cnpj;
                 vale.dataAgenda = formValues.dataAgenda;
                 vale.qtd = formValues.qtd;
+                vale.obs = formValues.obs;
                 await salvarTodosBancos();
                 renderValePallets();
                 Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Vale atualizado!', showConfirmButton: false, timer: 1800 });
@@ -5231,6 +5256,7 @@
                 "Nome do Cliente": v.cliente || '',
                 "Cidade / UF": v.cidade || '',
                 "Data de Agenda": v.dataAgenda || 'Não agendado',
+                "Observação": v.obs || '',
                 "Quantidade": v.qtd || 0
             }));
             XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(rowsVales), "Vales_Clientes");
@@ -5288,11 +5314,12 @@
                 return (v.numeroVale && v.numeroVale.toLowerCase().includes(termo)) ||
                     (v.cliente && v.cliente.toLowerCase().includes(termo)) ||
                     (v.cidade && v.cidade.toLowerCase().includes(termo)) ||
+                    (v.obs && v.obs.toLowerCase().includes(termo)) ||
                     (v.dataAgenda && String(v.dataAgenda).toLowerCase().includes(termo));
             });
 
             if (valesCliFiltrados.length === 0) {
-                if(tbodyVales) tbodyVales.innerHTML = `<tr><td colspan="6" class="text-center py-6 text-text-muted text-xs">Nenhum vale de cliente pendente.</td></tr>`;
+                if(tbodyVales) tbodyVales.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-text-muted text-xs">Nenhum vale de cliente pendente.</td></tr>`;
             } else {
                 const htmlCli = valesCliFiltrados.map((v, idx) => {
                     totalValesCli += (v.qtd || 0);
@@ -5306,6 +5333,7 @@
                         <td class="py-2.5 px-3 font-semibold text-text-main break-words">${v.cliente}</td>
                         <td class="py-2.5 px-3 text-text-muted whitespace-nowrap">${v.cidade || '---'}</td>
                         <td class="py-2.5 px-3">${agendaHtml}</td>
+                        <td class="py-2.5 px-3 text-text-muted max-w-[220px] break-words">${v.obs || '---'}</td>
                         <td class="py-2.5 px-3 text-center font-bold text-brand-red">${v.qtd}</td>
                         <td class="py-2.5 px-3 flex justify-center gap-1.5">
                             <button onclick="editarValePallet(${v.id})" class="edit-only p-1 text-text-muted hover:text-sky-400 rounded transition-colors" title="Editar / Agendar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path></svg></button>
